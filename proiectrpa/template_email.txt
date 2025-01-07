@@ -1,0 +1,14 @@
+Bună ziua,
+
+Aș dori să rezerv un fotograf pentru un eveniment special. Iată detaliile evenimentului:
+
+Tipul evenimentului: [nuntă / botez / aniversare / alt eveniment].
+Locația evenimentului: [numele locației], [orașul locației].
+Data evenimentului: [5 ianuarie 2025/05.01.2025/05-01-2025].
+Interval orar: (+-de la)[ora începerii] -(la +-aproximativ)[ora finalizării].
+Mentiuni speciale: Dacă este posibil, mi-ar plăcea să avem și [fotografii în aer liber, un fotograf suplimentar, albume personalizate etc.].
+Vă rog să-mi confirmați disponibilitatea și să îmi transmiteți mai multe detalii despre următorii pași.
+
+Vă mulțumesc!
+[Prenume Nume]
+[Număr de telefon]
