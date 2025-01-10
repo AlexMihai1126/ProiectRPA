@@ -20224,19 +20224,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lenovo\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Ojoc Diana-Cristiana\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "proiectrpa",
       "projectName": "proiectrpa",
-      "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Documente\\UiPath\\ProiectRPA\\proiectrpa\\.local",
-      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lenovo\\OneDrive\\Documente\\UiPath\\ProiectRPA\\proiectrpa\\.local",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ]
+      "projectPath": "C:\\Users\\Ojoc Diana-Cristiana\\Documents\\UiPath\\ProiectRPA\\proiectrpa\\.local",
+      "packagesPath": "C:\\Users\\Ojoc Diana-Cristiana\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ojoc Diana-Cristiana\\Documents\\UiPath\\ProiectRPA\\proiectrpa\\.local"
     },
     "frameworks": {
       "net8.0-windows7.0": {
@@ -20267,7 +20263,7 @@
             "version": "[24.12.0-preview, 24.12.0-preview]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\UiPath\\Studio\\PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\Ojoc Diana-Cristiana\\AppData\\Local\\Programs\\UiPath\\Studio\\PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
