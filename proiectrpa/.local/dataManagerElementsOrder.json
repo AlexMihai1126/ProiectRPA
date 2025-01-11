@@ -64,6 +64,48 @@
       "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
+    },
+    {
+      "Path": "generarePDF.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "caleTemplateWord&Sequence_1",
+        "datatableExcel&Sequence_1",
+        "caleExcel&Sequence_1",
+        "numeFisierGenerat&Sequence_5",
+        "intervalOrar&Sequence_19",
+        "numarOreCalc&Sequence_19",
+        "mailUtilizator&Sequence_5",
+        "caleFolderPDF&Sequence_1",
+        "optiuneFilmare&Sequence_1",
+        "optiuneAlbum&Sequence_1",
+        "optiuneFotograf&Sequence_1",
+        "listaPreturi&Sequence_1",
+        "pretTotal&Sequence_5",
+        "extraoptiuniText&Sequence_3",
+        "mentiuniList&Sequence_6",
+        "pretOra&Sequence_1",
+        "nrOreCalculat&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "replyEmail.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "incarcareFisierConfig.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
     }
   ]
 }
