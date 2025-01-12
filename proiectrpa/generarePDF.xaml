@@ -1,4 +1,14 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="generarePDF" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="generarePDF_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/word" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="generarePDF" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/word" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="In_priceList" Type="InArgument(scg:Dictionary(x:String, x:Int32))" />
+    <x:Property Name="In_excelPath" Type="InArgument(x:String)" />
+    <x:Property Name="In_folderPath" Type="InArgument(x:String)" />
+    <x:Property Name="In_templatePath" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>generarePDF_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -237,18 +247,13 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="generarePDF" sap:VirtualizedContainerService.HintSize="1452.0000000000002,8603.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="generarePDF" sap:VirtualizedContainerService.HintSize="885.6000000000001,8903.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Default="informatii_email.xlsx" Name="caleExcel" />
       <Variable x:TypeArguments="sd:DataTable" Name="datatableExcel" />
       <Variable x:TypeArguments="x:Int32" Name="nrOreCalculat" />
-      <Variable x:TypeArguments="x:Double" Name="pretOra" />
       <Variable x:TypeArguments="x:Boolean" Name="optiuneFotograf" />
-      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Int32)" Name="listaPreturi" />
       <Variable x:TypeArguments="x:Boolean" Name="optiuneAlbum" />
       <Variable x:TypeArguments="x:Boolean" Name="optiuneFilmare" />
-      <Variable x:TypeArguments="x:String" Default="PDF_Docs" Name="caleFolderPDF" />
-      <Variable x:TypeArguments="x:String" Default="template_pdf.docx" Name="caleTemplateWord" />
       <Variable x:TypeArguments="x:Int32" Name="rowIndex" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -256,15 +261,18 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="721.6,660" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="723.2,660" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
         <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="416,171.2" sap2010:WorkflowViewState.IdRef="Sequence_26">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="In_excelPath" />
+          </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[datatableExcel]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="382.4,111.2" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="[caleExcel]" />
+          <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[datatableExcel]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="382.4,111.2" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="[In_excelPath]" />
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
@@ -294,41 +302,21 @@
         </Sequence>
       </TryCatch.Finally>
     </TryCatch>
-    <Assign sap:VirtualizedContainerService.HintSize="721.6,115.2" sap2010:WorkflowViewState.IdRef="Assign_4">
-      <Assign.To>
-        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)">[listaPreturi]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)" xml:space="preserve">[New Dictionary(Of String, Int32) From {
-    {"fotograf_suplimentar", 500},
-    {"print_album", 200},
-    {"filmari", 350}
-}]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="721.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_5">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:Double">[pretOra]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:Double">500</InArgument>
-      </Assign.Value>
-    </Assign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[rowIndex]" DataTable="[datatableExcel]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="721.6,7592" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[rowIndex]" DataTable="[datatableExcel]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="723.2,8220" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="720,7410.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="721.6,8047.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[String.Equals(CType(CurrentRow(&quot;Confirmat&quot;), String).ToLower(), &quot;nu&quot;)]" sap:VirtualizedContainerService.HintSize="686.4,7350.4" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[String.Equals(CType(CurrentRow(&quot;Confirmat&quot;), String).ToLower(), &quot;nu&quot;)]" sap:VirtualizedContainerService.HintSize="688,7987.2" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="684.8,7131.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="686.4,7768" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="extraoptiuniText" />
                   </Sequence.Variables>
@@ -337,428 +325,459 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;J&quot; + (rowIndex + 2).ToString]" DisplayName="Coloana: PDF" sap:VirtualizedContainerService.HintSize="651.2,148" sap2010:WorkflowViewState.IdRef="WriteCell_2" SheetName="Sheet1" Text="da" WorkbookPath="[caleExcel]" />
-                  <p:WordApplicationScope SensitivityLabel="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Word Application Scope" FilePath="[caleTemplateWord]" sap:VirtualizedContainerService.HintSize="651.2,6923.2" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1" ReadOnly="True" SensitivityOperation="None">
-                    <p:WordApplicationScope.Body>
-                      <ActivityAction x:TypeArguments="ui:WordDocument">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
-                        </ActivityAction.Argument>
-                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="617.6,6790.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                          <Sequence.Variables>
-                            <Variable x:TypeArguments="x:String" Name="mailUtilizator" />
-                            <Variable x:TypeArguments="x:Double" Name="pretTotal" />
-                            <Variable x:TypeArguments="x:String" Name="numeFisierGenerat" />
-                          </Sequence.Variables>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ui:MultipleAssign DisplayName="Resetare optiuni aditionale" sap:VirtualizedContainerService.HintSize="584,212" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
-                            <ui:MultipleAssign.AssignOperations>
-                              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
-                                  <ui:AssignOperation.To>
-                                    <OutArgument x:TypeArguments="x:Boolean">[optiuneAlbum]</OutArgument>
-                                  </ui:AssignOperation.To>
-                                  <ui:AssignOperation.Value>
-                                    <InArgument x:TypeArguments="x:Boolean">False</InArgument>
-                                  </ui:AssignOperation.Value>
-                                </ui:AssignOperation>
-                                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
-                                  <ui:AssignOperation.To>
-                                    <OutArgument x:TypeArguments="x:Boolean">[optiuneFilmare]</OutArgument>
-                                  </ui:AssignOperation.To>
-                                  <ui:AssignOperation.Value>
-                                    <InArgument x:TypeArguments="x:Boolean">False</InArgument>
-                                  </ui:AssignOperation.Value>
-                                </ui:AssignOperation>
-                                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
-                                  <ui:AssignOperation.To>
-                                    <OutArgument x:TypeArguments="x:Boolean">[optiuneFotograf]</OutArgument>
-                                  </ui:AssignOperation.To>
-                                  <ui:AssignOperation.Value>
-                                    <InArgument x:TypeArguments="x:Boolean">False</InArgument>
-                                  </ui:AssignOperation.Value>
-                                </ui:AssignOperation>
-                              </scg:List>
-                            </ui:MultipleAssign.AssignOperations>
-                          </ui:MultipleAssign>
-                          <p:WordReplaceText Found="{x:Null}" DisplayName="Nume" sap:VirtualizedContainerService.HintSize="584,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_1" Replace="[CurrentRow(&quot;Nume&quot;).ToString]" ReplaceAll="False" Search="{}{Nume}" />
-                          <Assign DisplayName="Pastrare mail in variabila" sap:VirtualizedContainerService.HintSize="584,113.6" sap2010:WorkflowViewState.IdRef="Assign_3">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="x:String">[mailUtilizator]</OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="x:String">[CurrentRow("Email").ToString]</InArgument>
-                            </Assign.Value>
-                          </Assign>
-                          <p:WordReplaceText Found="{x:Null}" DisplayName="Mail" sap:VirtualizedContainerService.HintSize="584,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_2" Replace="[mailUtilizator]" ReplaceAll="False" Search="{}{Email}" />
-                          <p:WordReplaceText Found="{x:Null}" DisplayName="Telefon" sap:VirtualizedContainerService.HintSize="584,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_3" Replace="[CurrentRow(&quot;Telefon&quot;).ToString]" ReplaceAll="False" Search="{}{Telefon}" />
-                          <p:WordReplaceText Found="{x:Null}" DisplayName="Tip eveniment" sap:VirtualizedContainerService.HintSize="584,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_4" Replace="[CurrentRow(&quot;Tip_eveniment&quot;).ToString]" ReplaceAll="False" Search="{}{Tip_eveniment}" />
-                          <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="584,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_5" Replace="[CurrentRow(&quot;Locatie_eveniment&quot;).ToString]" ReplaceAll="False" Search="{}{Locatie_eveniment}" />
-                          <p:WordReplaceText Found="{x:Null}" DisplayName="Data eveniment" sap:VirtualizedContainerService.HintSize="584,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_6" Replace="[CurrentRow(&quot;Data_eveniment&quot;).ToString]" ReplaceAll="False" Search="{}{Data_eveniment}" />
-                          <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="584,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_7" Replace="[CurrentRow(&quot;Interval_orar&quot;).ToString]" ReplaceAll="False" Search="{}{Interval_orar}" />
-                          <If Condition="[CurrentRow(&quot;Mentiuni&quot;).ToString() &lt;&gt; &quot;&quot;]" DisplayName="Verificare si adaugare extraoptiuni" sap:VirtualizedContainerService.HintSize="584,2702.4" sap2010:WorkflowViewState.IdRef="If_2">
-                            <If.Then>
-                              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="582.4,2119.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="652.8,7708" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                    <TryCatch.Try>
+                      <p:WordApplicationScope SensitivityLabel="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Word Application Scope" FilePath="[In_templatePath]" sap:VirtualizedContainerService.HintSize="651.2,7088" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1" ReadOnly="True" SensitivityOperation="None">
+                        <p:WordApplicationScope.Body>
+                          <ActivityAction x:TypeArguments="ui:WordDocument">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="617.6,6938.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="x:String" Name="mailUtilizator" />
+                                <Variable x:TypeArguments="x:Double" Name="pretTotal" />
+                                <Variable x:TypeArguments="x:String" Name="numeFisierGenerat" />
+                              </Sequence.Variables>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:MultipleAssign DisplayName="Resetare optiuni aditionale" sap:VirtualizedContainerService.HintSize="584,212" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
+                                <ui:MultipleAssign.AssignOperations>
+                                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="x:Boolean">[optiuneAlbum]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="x:Boolean">[optiuneFilmare]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+                                      <ui:AssignOperation.To>
+                                        <OutArgument x:TypeArguments="x:Boolean">[optiuneFotograf]</OutArgument>
+                                      </ui:AssignOperation.To>
+                                      <ui:AssignOperation.Value>
+                                        <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                      </ui:AssignOperation.Value>
+                                    </ui:AssignOperation>
+                                  </scg:List>
+                                </ui:MultipleAssign.AssignOperations>
+                              </ui:MultipleAssign>
+                              <p:WordReplaceText Found="{x:Null}" DisplayName="Nume" sap:VirtualizedContainerService.HintSize="584,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_1" Replace="[CurrentRow(&quot;Nume&quot;).ToString]" ReplaceAll="False" Search="{}{Nume}" />
+                              <Assign DisplayName="Pastrare mail in variabila" sap:VirtualizedContainerService.HintSize="584,113.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[mailUtilizator]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[CurrentRow("Email").ToString]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <p:WordReplaceText Found="{x:Null}" DisplayName="Mail" sap:VirtualizedContainerService.HintSize="584,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_2" Replace="[mailUtilizator]" ReplaceAll="False" Search="{}{Email}" />
+                              <p:WordReplaceText Found="{x:Null}" DisplayName="Telefon" sap:VirtualizedContainerService.HintSize="584,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_3" Replace="[CurrentRow(&quot;Telefon&quot;).ToString]" ReplaceAll="False" Search="{}{Telefon}" />
+                              <p:WordReplaceText Found="{x:Null}" DisplayName="Tip eveniment" sap:VirtualizedContainerService.HintSize="584,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_4" Replace="[CurrentRow(&quot;Tip_eveniment&quot;).ToString]" ReplaceAll="False" Search="{}{Tip_eveniment}" />
+                              <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="584,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_5" Replace="[CurrentRow(&quot;Locatie_eveniment&quot;).ToString]" ReplaceAll="False" Search="{}{Locatie_eveniment}" />
+                              <p:WordReplaceText Found="{x:Null}" DisplayName="Data eveniment" sap:VirtualizedContainerService.HintSize="584,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_6" Replace="[CurrentRow(&quot;Data_eveniment&quot;).ToString]" ReplaceAll="False" Search="{}{Data_eveniment}" />
+                              <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="584,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_7" Replace="[CurrentRow(&quot;Interval_orar&quot;).ToString]" ReplaceAll="False" Search="{}{Interval_orar}" />
+                              <If Condition="[CurrentRow(&quot;Mentiuni&quot;).ToString() &lt;&gt; &quot;&quot;]" DisplayName="Verificare si adaugare extraoptiuni" sap:VirtualizedContainerService.HintSize="584,2702.4" sap2010:WorkflowViewState.IdRef="If_2">
+                                <If.Then>
+                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="582.4,2119.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                    <Sequence.Variables>
+                                      <Variable x:TypeArguments="s:String[]" Name="mentiuniList" />
+                                    </Sequence.Variables>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <Assign DisplayName="Separare optiuni ca lista" sap:VirtualizedContainerService.HintSize="548.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="s:String[]">[mentiuniList]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="s:String[]">[CurrentRow("Mentiuni").ToString().Split(","c)]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Pentru fiecare optiune selectata" sap:VirtualizedContainerService.HintSize="548.8,1478.4" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[mentiuniList]">
+                                      <ui:ForEach.Body>
+                                        <ActivityAction x:TypeArguments="x:String">
+                                          <ActivityAction.Argument>
+                                            <DelegateInArgument x:TypeArguments="x:String" Name="currentText" />
+                                          </ActivityAction.Argument>
+                                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="547.2,1348" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <If Condition="[String.Equals(currentText.ToLower(), &quot;fotograf suplimentar&quot;)]" DisplayName="Extraoptiune fotograf suplimentar" sap:VirtualizedContainerService.HintSize="513.6,508" sap2010:WorkflowViewState.IdRef="If_4">
+                                              <If.Then>
+                                                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,344.8" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <Assign sap:VirtualizedContainerService.HintSize="478.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                                    <Assign.To>
+                                                      <OutArgument x:TypeArguments="x:Boolean">[optiuneFotograf]</OutArgument>
+                                                    </Assign.To>
+                                                    <Assign.Value>
+                                                      <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                                    </Assign.Value>
+                                                  </Assign>
+                                                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478.4,171.2" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                                                    <ui:MultipleAssign.AssignOperations>
+                                                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                                                          <ui:AssignOperation.To>
+                                                            <OutArgument x:TypeArguments="x:Boolean">[optiuneFotograf]</OutArgument>
+                                                          </ui:AssignOperation.To>
+                                                          <ui:AssignOperation.Value>
+                                                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                                          </ui:AssignOperation.Value>
+                                                        </ui:AssignOperation>
+                                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                                                          <ui:AssignOperation.To>
+                                                            <OutArgument x:TypeArguments="x:String">[extraoptiuniText]</OutArgument>
+                                                          </ui:AssignOperation.To>
+                                                          <ui:AssignOperation.Value>
+                                                            <InArgument x:TypeArguments="x:String">[extraoptiuniText &amp; "fotograf suplimentar "]</InArgument>
+                                                          </ui:AssignOperation.Value>
+                                                        </ui:AssignOperation>
+                                                      </scg:List>
+                                                    </ui:MultipleAssign.AssignOperations>
+                                                  </ui:MultipleAssign>
+                                                </Sequence>
+                                              </If.Then>
+                                              <If.Else>
+                                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,24.8" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </Sequence>
+                                              </If.Else>
+                                            </If>
+                                            <If Condition="[String.Equals(currentText.ToLower(), &quot;print album&quot;)]" DisplayName="Extraoptiune album" sap:VirtualizedContainerService.HintSize="513.6,394.4" sap2010:WorkflowViewState.IdRef="If_5">
+                                              <If.Then>
+                                                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,231.2" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478.4,171.2" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                                                    <ui:MultipleAssign.AssignOperations>
+                                                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                                                          <ui:AssignOperation.To>
+                                                            <OutArgument x:TypeArguments="x:Boolean">[optiuneAlbum]</OutArgument>
+                                                          </ui:AssignOperation.To>
+                                                          <ui:AssignOperation.Value>
+                                                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                                          </ui:AssignOperation.Value>
+                                                        </ui:AssignOperation>
+                                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                                                          <ui:AssignOperation.To>
+                                                            <OutArgument x:TypeArguments="x:String">[extraoptiuniText]</OutArgument>
+                                                          </ui:AssignOperation.To>
+                                                          <ui:AssignOperation.Value>
+                                                            <InArgument x:TypeArguments="x:String">[extraoptiuniText &amp; "album "]</InArgument>
+                                                          </ui:AssignOperation.Value>
+                                                        </ui:AssignOperation>
+                                                      </scg:List>
+                                                    </ui:MultipleAssign.AssignOperations>
+                                                  </ui:MultipleAssign>
+                                                </Sequence>
+                                              </If.Then>
+                                              <If.Else>
+                                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,24.8" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </Sequence>
+                                              </If.Else>
+                                            </If>
+                                            <If Condition="[String.Equals(currentText.ToLower(), &quot;filmari&quot;) Or String.Equals(currentText.ToLower(), &quot;filmări&quot;)]" DisplayName="Extraoptiune filmare" sap:VirtualizedContainerService.HintSize="513.6,385.6" sap2010:WorkflowViewState.IdRef="If_6">
+                                              <If.Then>
+                                                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,231.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478.4,171.2" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+                                                    <ui:MultipleAssign.AssignOperations>
+                                                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                                                          <ui:AssignOperation.To>
+                                                            <OutArgument x:TypeArguments="x:Boolean">[optiuneFilmare]</OutArgument>
+                                                          </ui:AssignOperation.To>
+                                                          <ui:AssignOperation.Value>
+                                                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                                          </ui:AssignOperation.Value>
+                                                        </ui:AssignOperation>
+                                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                                                          <ui:AssignOperation.To>
+                                                            <OutArgument x:TypeArguments="x:String">[extraoptiuniText]</OutArgument>
+                                                          </ui:AssignOperation.To>
+                                                          <ui:AssignOperation.Value>
+                                                            <InArgument x:TypeArguments="x:String">[extraoptiuniText &amp; "filmări "]</InArgument>
+                                                          </ui:AssignOperation.Value>
+                                                        </ui:AssignOperation>
+                                                      </scg:List>
+                                                    </ui:MultipleAssign.AssignOperations>
+                                                  </ui:MultipleAssign>
+                                                </Sequence>
+                                              </If.Then>
+                                              <If.Else>
+                                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,24.8" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </Sequence>
+                                              </If.Else>
+                                            </If>
+                                          </Sequence>
+                                        </ActivityAction>
+                                      </ui:ForEach.Body>
+                                    </ui:ForEach>
+                                    <If Condition="[optiuneAlbum Or optiuneFotograf Or optiuneFilmare]" sap:VirtualizedContainerService.HintSize="548.8,467.2" sap2010:WorkflowViewState.IdRef="If_7">
+                                      <If.Then>
+                                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,248" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,188" sap2010:WorkflowViewState.IdRef="WordReplaceText_11" Replace="[extraoptiuniText]" ReplaceAll="False" Search="{}{Mentiuni}" />
+                                        </Sequence>
+                                      </If.Then>
+                                      <If.Else>
+                                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,89.6" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </Sequence>
+                                      </If.Else>
+                                    </If>
+                                  </Sequence>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="582.4,444.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <p:WordReplaceText Found="{x:Null}" DisplayName="Stergere text daca nu exista optiuni specificate" sap:VirtualizedContainerService.HintSize="548.8,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_9" ReplaceAll="False" Search="Mențiuni: {Mentiuni}">
+                                      <p:WordReplaceText.Replace>
+                                        <InArgument x:TypeArguments="x:String">
+                                          <Literal x:TypeArguments="x:String" Value="" />
+                                        </InArgument>
+                                      </p:WordReplaceText.Replace>
+                                    </p:WordReplaceText>
+                                    <p:WordReplaceText Found="{x:Null}" DisplayName="Stergere pret optiuni" sap:VirtualizedContainerService.HintSize="548.8,188" sap2010:WorkflowViewState.IdRef="WordReplaceText_12" ReplaceAll="False" Search="Dacă ați selectat extra opțiuni">
+                                      <p:WordReplaceText.Replace>
+                                        <InArgument x:TypeArguments="x:String">
+                                          <Literal x:TypeArguments="x:String" Value="" />
+                                        </InArgument>
+                                      </p:WordReplaceText.Replace>
+                                    </p:WordReplaceText>
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                              <Sequence DisplayName="Calculare pret total" sap:VirtualizedContainerService.HintSize="584,1491.2" sap2010:WorkflowViewState.IdRef="Sequence_19">
                                 <Sequence.Variables>
-                                  <Variable x:TypeArguments="s:String[]" Name="mentiuniList" />
+                                  <Variable x:TypeArguments="x:Double" Name="numarOreCalc" />
+                                  <Variable x:TypeArguments="x:String" Name="intervalOrar" />
                                 </Sequence.Variables>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <Assign DisplayName="Separare optiuni ca lista" sap:VirtualizedContainerService.HintSize="548.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                <Assign sap:VirtualizedContainerService.HintSize="468.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_14">
                                   <Assign.To>
-                                    <OutArgument x:TypeArguments="s:String[]">[mentiuniList]</OutArgument>
+                                    <OutArgument x:TypeArguments="x:String">[intervalOrar]</OutArgument>
                                   </Assign.To>
                                   <Assign.Value>
-                                    <InArgument x:TypeArguments="s:String[]">[CurrentRow("Mentiuni").ToString().Split(","c)]</InArgument>
+                                    <InArgument x:TypeArguments="x:String">[CurrentRow("Interval_orar").ToString]</InArgument>
                                   </Assign.Value>
                                 </Assign>
-                                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Pentru fiecare optiune selectata" sap:VirtualizedContainerService.HintSize="548.8,1478.4" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[mentiuniList]">
-                                  <ui:ForEach.Body>
-                                    <ActivityAction x:TypeArguments="x:String">
-                                      <ActivityAction.Argument>
-                                        <DelegateInArgument x:TypeArguments="x:String" Name="currentText" />
-                                      </ActivityAction.Argument>
-                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="547.2,1348" sap2010:WorkflowViewState.IdRef="Sequence_10">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <If Condition="[String.Equals(currentText.ToLower(), &quot;fotograf suplimentar&quot;)]" DisplayName="Extraoptiune fotograf suplimentar" sap:VirtualizedContainerService.HintSize="513.6,508" sap2010:WorkflowViewState.IdRef="If_4">
-                                          <If.Then>
-                                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,344.8" sap2010:WorkflowViewState.IdRef="Sequence_14">
-                                              <sap:WorkflowViewStateService.ViewState>
-                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                </scg:Dictionary>
-                                              </sap:WorkflowViewStateService.ViewState>
-                                              <Assign sap:VirtualizedContainerService.HintSize="478.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_9">
-                                                <Assign.To>
-                                                  <OutArgument x:TypeArguments="x:Boolean">[optiuneFotograf]</OutArgument>
-                                                </Assign.To>
-                                                <Assign.Value>
-                                                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
-                                                </Assign.Value>
-                                              </Assign>
-                                              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478.4,171.2" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
-                                                <ui:MultipleAssign.AssignOperations>
-                                                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
-                                                      <ui:AssignOperation.To>
-                                                        <OutArgument x:TypeArguments="x:Boolean">[optiuneFotograf]</OutArgument>
-                                                      </ui:AssignOperation.To>
-                                                      <ui:AssignOperation.Value>
-                                                        <InArgument x:TypeArguments="x:Boolean">True</InArgument>
-                                                      </ui:AssignOperation.Value>
-                                                    </ui:AssignOperation>
-                                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
-                                                      <ui:AssignOperation.To>
-                                                        <OutArgument x:TypeArguments="x:String">[extraoptiuniText]</OutArgument>
-                                                      </ui:AssignOperation.To>
-                                                      <ui:AssignOperation.Value>
-                                                        <InArgument x:TypeArguments="x:String">[extraoptiuniText &amp; "fotograf suplimentar "]</InArgument>
-                                                      </ui:AssignOperation.Value>
-                                                    </ui:AssignOperation>
-                                                  </scg:List>
-                                                </ui:MultipleAssign.AssignOperations>
-                                              </ui:MultipleAssign>
-                                            </Sequence>
-                                          </If.Then>
-                                          <If.Else>
-                                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,24.8" sap2010:WorkflowViewState.IdRef="Sequence_15">
-                                              <sap:WorkflowViewStateService.ViewState>
-                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                </scg:Dictionary>
-                                              </sap:WorkflowViewStateService.ViewState>
-                                            </Sequence>
-                                          </If.Else>
-                                        </If>
-                                        <If Condition="[String.Equals(currentText.ToLower(), &quot;print album&quot;)]" DisplayName="Extraoptiune album" sap:VirtualizedContainerService.HintSize="513.6,394.4" sap2010:WorkflowViewState.IdRef="If_5">
-                                          <If.Then>
-                                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,231.2" sap2010:WorkflowViewState.IdRef="Sequence_12">
-                                              <sap:WorkflowViewStateService.ViewState>
-                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                </scg:Dictionary>
-                                              </sap:WorkflowViewStateService.ViewState>
-                                              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478.4,171.2" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
-                                                <ui:MultipleAssign.AssignOperations>
-                                                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
-                                                      <ui:AssignOperation.To>
-                                                        <OutArgument x:TypeArguments="x:Boolean">[optiuneAlbum]</OutArgument>
-                                                      </ui:AssignOperation.To>
-                                                      <ui:AssignOperation.Value>
-                                                        <InArgument x:TypeArguments="x:Boolean">True</InArgument>
-                                                      </ui:AssignOperation.Value>
-                                                    </ui:AssignOperation>
-                                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
-                                                      <ui:AssignOperation.To>
-                                                        <OutArgument x:TypeArguments="x:String">[extraoptiuniText]</OutArgument>
-                                                      </ui:AssignOperation.To>
-                                                      <ui:AssignOperation.Value>
-                                                        <InArgument x:TypeArguments="x:String">[extraoptiuniText &amp; "album "]</InArgument>
-                                                      </ui:AssignOperation.Value>
-                                                    </ui:AssignOperation>
-                                                  </scg:List>
-                                                </ui:MultipleAssign.AssignOperations>
-                                              </ui:MultipleAssign>
-                                            </Sequence>
-                                          </If.Then>
-                                          <If.Else>
-                                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,24.8" sap2010:WorkflowViewState.IdRef="Sequence_13">
-                                              <sap:WorkflowViewStateService.ViewState>
-                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                </scg:Dictionary>
-                                              </sap:WorkflowViewStateService.ViewState>
-                                            </Sequence>
-                                          </If.Else>
-                                        </If>
-                                        <If Condition="[String.Equals(currentText.ToLower(), &quot;filmari&quot;) Or String.Equals(currentText.ToLower(), &quot;filmări&quot;)]" DisplayName="Extraoptiune filmare" sap:VirtualizedContainerService.HintSize="513.6,385.6" sap2010:WorkflowViewState.IdRef="If_6">
-                                          <If.Then>
-                                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,231.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
-                                              <sap:WorkflowViewStateService.ViewState>
-                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                </scg:Dictionary>
-                                              </sap:WorkflowViewStateService.ViewState>
-                                              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478.4,171.2" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
-                                                <ui:MultipleAssign.AssignOperations>
-                                                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
-                                                      <ui:AssignOperation.To>
-                                                        <OutArgument x:TypeArguments="x:Boolean">[optiuneFilmare]</OutArgument>
-                                                      </ui:AssignOperation.To>
-                                                      <ui:AssignOperation.Value>
-                                                        <InArgument x:TypeArguments="x:Boolean">True</InArgument>
-                                                      </ui:AssignOperation.Value>
-                                                    </ui:AssignOperation>
-                                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
-                                                      <ui:AssignOperation.To>
-                                                        <OutArgument x:TypeArguments="x:String">[extraoptiuniText]</OutArgument>
-                                                      </ui:AssignOperation.To>
-                                                      <ui:AssignOperation.Value>
-                                                        <InArgument x:TypeArguments="x:String">[extraoptiuniText &amp; "filmări "]</InArgument>
-                                                      </ui:AssignOperation.Value>
-                                                    </ui:AssignOperation>
-                                                  </scg:List>
-                                                </ui:MultipleAssign.AssignOperations>
-                                              </ui:MultipleAssign>
-                                            </Sequence>
-                                          </If.Then>
-                                          <If.Else>
-                                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,24.8" sap2010:WorkflowViewState.IdRef="Sequence_16">
-                                              <sap:WorkflowViewStateService.ViewState>
-                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                </scg:Dictionary>
-                                              </sap:WorkflowViewStateService.ViewState>
-                                            </Sequence>
-                                          </If.Else>
-                                        </If>
-                                      </Sequence>
-                                    </ActivityAction>
-                                  </ui:ForEach.Body>
-                                </ui:ForEach>
-                                <If Condition="[optiuneAlbum Or optiuneFotograf Or optiuneFilmare]" sap:VirtualizedContainerService.HintSize="548.8,467.2" sap2010:WorkflowViewState.IdRef="If_7">
+                                <If Condition="[optiuneAlbum = True]" sap:VirtualizedContainerService.HintSize="468.8,328" sap2010:WorkflowViewState.IdRef="If_8">
                                   <If.Then>
-                                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,248" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_21">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="433.6,188" sap2010:WorkflowViewState.IdRef="WordReplaceText_11" Replace="[extraoptiuniText]" ReplaceAll="False" Search="{}{Mentiuni}" />
+                                      <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_11">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Double">[pretTotal]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Double">[pretTotal + In_priceList("print_album")]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
                                     </Sequence>
                                   </If.Then>
                                   <If.Else>
-                                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,89.6" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,24.8" sap2010:WorkflowViewState.IdRef="Sequence_20">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                     </Sequence>
                                   </If.Else>
                                 </If>
+                                <If Condition="[optiuneFilmare = True]" sap:VirtualizedContainerService.HintSize="468.8,328" sap2010:WorkflowViewState.IdRef="If_9">
+                                  <If.Then>
+                                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_12">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Double">[pretTotal]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Double">[pretTotal + In_priceList("filmari")]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,24.8" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                                <If Condition="[optiuneFotograf = True]" sap:VirtualizedContainerService.HintSize="468.8,328" sap2010:WorkflowViewState.IdRef="If_10">
+                                  <If.Then>
+                                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Double">[pretTotal]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Double">[pretTotal + In_priceList("fotograf_suplimentar")]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,24.8" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                                <ui:InvokeCode ContinueOnError="{x:Null}" Code="' declara variabile&#xA;Dim intervale_orare As String() = In_intOrarStr.Split(&quot;-&quot;c)&#xA;Dim start As String() = intervale_orare(0).Split(&quot;:&quot;c)&#xA;Dim ora_start As Integer = CInt(start(0))&#xA;Dim minute_start As Double = CInt(start(1)) / 60&#xA;Dim start_valoare As Double = ora_start + minute_start&#xA;&#xA;Dim final As String() = intervale_orare(1).Split(&quot;:&quot;c)&#xA;Dim ora_final As Integer = CInt(final(0))&#xA;Dim minute_final As Double = CInt(final(1)) / 60&#xA;Dim final_valoare As Double = ora_final + minute_final&#xA;&#xA;' calcul&#xA;If final_valoare &lt; start_valoare Then&#xA;    final_valoare += 24 ' adauga 24 ore la final pentru a corecta intervalul care trece de miezul noptii&#xA;End If&#xA;Out_nrOre = final_valoare - start_valoare" DisplayName="Cod calculare numar ore din interval" sap:VirtualizedContainerService.HintSize="468.8,196.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+                                  <ui:InvokeCode.Arguments>
+                                    <OutArgument x:TypeArguments="x:Double" x:Key="Out_nrOre">[numarOreCalc]</OutArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="In_intOrarStr">[intervalOrar]</InArgument>
+                                  </ui:InvokeCode.Arguments>
+                                </ui:InvokeCode>
+                                <Assign sap:VirtualizedContainerService.HintSize="468.8,104.8" sap2010:WorkflowViewState.IdRef="Assign_15">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Double">[pretTotal]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Double">[pretTotal + (numarOreCalc * In_priceList("base_price"))]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
                               </Sequence>
-                            </If.Then>
-                            <If.Else>
-                              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="582.4,444.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <p:WordReplaceText Found="{x:Null}" DisplayName="Stergere text daca nu exista optiuni specificate" sap:VirtualizedContainerService.HintSize="548.8,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_9" ReplaceAll="False" Search="Mențiuni: {Mentiuni}">
-                                  <p:WordReplaceText.Replace>
-                                    <InArgument x:TypeArguments="x:String">
-                                      <Literal x:TypeArguments="x:String" Value="" />
-                                    </InArgument>
-                                  </p:WordReplaceText.Replace>
-                                </p:WordReplaceText>
-                                <p:WordReplaceText Found="{x:Null}" DisplayName="Stergere pret optiuni" sap:VirtualizedContainerService.HintSize="548.8,188" sap2010:WorkflowViewState.IdRef="WordReplaceText_12" ReplaceAll="False" Search="Dacă ați selectat extra opțiuni">
-                                  <p:WordReplaceText.Replace>
-                                    <InArgument x:TypeArguments="x:String">
-                                      <Literal x:TypeArguments="x:String" Value="" />
-                                    </InArgument>
-                                  </p:WordReplaceText.Replace>
-                                </p:WordReplaceText>
-                              </Sequence>
-                            </If.Else>
-                          </If>
-                          <Sequence DisplayName="Calculare pret total" sap:VirtualizedContainerService.HintSize="584,1491.2" sap2010:WorkflowViewState.IdRef="Sequence_19">
-                            <Sequence.Variables>
-                              <Variable x:TypeArguments="x:Double" Name="numarOreCalc" />
-                              <Variable x:TypeArguments="x:String" Name="intervalOrar" />
-                            </Sequence.Variables>
+                              <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="584,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_14" Replace="[In_priceList(&quot;base_price&quot;).ToString]" ReplaceAll="False" Search="{}{Pret_ora}" />
+                              <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="584,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_13" Replace="[pretTotal.ToString]" ReplaceAll="False" Search="{}{Pret_total}" />
+                              <Assign sap:VirtualizedContainerService.HintSize="584,113.6" sap2010:WorkflowViewState.IdRef="Assign_16">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[numeFisierGenerat]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">["Oferta_" + mailUtilizator + ".pdf"]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <p:WordExportToPdf DisplayName="Salvare fisier ca PDF" FilePath="[numeFisierGenerat]" sap:VirtualizedContainerService.HintSize="584,143.2" sap2010:WorkflowViewState.IdRef="WordExportToPdf_1" />
+                              <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[In_folderPath]" DisplayName="Muta fisier in folder" sap:VirtualizedContainerService.HintSize="584,192" sap2010:WorkflowViewState.IdRef="MoveFile_2" Overwrite="True" Path="[numeFisierGenerat]" />
+                              <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;J&quot; + (rowIndex + 2).ToString]" DisplayName="Marcare coloana PDF cu &quot;da&quot;" sap:VirtualizedContainerService.HintSize="584,139.2" sap2010:WorkflowViewState.IdRef="WriteCell_2" SheetName="Sheet1" Text="da" WorkbookPath="[In_excelPath]" />
+                            </Sequence>
+                          </ActivityAction>
+                        </p:WordApplicationScope.Body>
+                      </p:WordApplicationScope>
+                    </TryCatch.Try>
+                    <TryCatch.Catches>
+                      <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                        <ActivityAction x:TypeArguments="s:Exception">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="651.2,343.2" sap2010:WorkflowViewState.IdRef="Sequence_29">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Assign sap:VirtualizedContainerService.HintSize="468.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_14">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:String">[intervalOrar]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:String">[CurrentRow("Interval_orar").ToString]</InArgument>
-                              </Assign.Value>
-                            </Assign>
-                            <If Condition="[optiuneAlbum = True]" sap:VirtualizedContainerService.HintSize="468.8,328" sap2010:WorkflowViewState.IdRef="If_8">
-                              <If.Then>
-                                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_21">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_11">
-                                    <Assign.To>
-                                      <OutArgument x:TypeArguments="x:Double">[pretTotal]</OutArgument>
-                                    </Assign.To>
-                                    <Assign.Value>
-                                      <InArgument x:TypeArguments="x:Double">[pretTotal + listaPreturi("print_album")]</InArgument>
-                                    </Assign.Value>
-                                  </Assign>
-                                </Sequence>
-                              </If.Then>
-                              <If.Else>
-                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,24.8" sap2010:WorkflowViewState.IdRef="Sequence_20">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </Sequence>
-                              </If.Else>
-                            </If>
-                            <If Condition="[optiuneFilmare = True]" sap:VirtualizedContainerService.HintSize="468.8,328" sap2010:WorkflowViewState.IdRef="If_9">
-                              <If.Then>
-                                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_22">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_12">
-                                    <Assign.To>
-                                      <OutArgument x:TypeArguments="x:Double">[pretTotal]</OutArgument>
-                                    </Assign.To>
-                                    <Assign.Value>
-                                      <InArgument x:TypeArguments="x:Double">[pretTotal + listaPreturi("filmari")]</InArgument>
-                                    </Assign.Value>
-                                  </Assign>
-                                </Sequence>
-                              </If.Then>
-                              <If.Else>
-                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,24.8" sap2010:WorkflowViewState.IdRef="Sequence_24">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </Sequence>
-                              </If.Else>
-                            </If>
-                            <If Condition="[optiuneFotograf = True]" sap:VirtualizedContainerService.HintSize="468.8,328" sap2010:WorkflowViewState.IdRef="If_10">
-                              <If.Then>
-                                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_23">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_13">
-                                    <Assign.To>
-                                      <OutArgument x:TypeArguments="x:Double">[pretTotal]</OutArgument>
-                                    </Assign.To>
-                                    <Assign.Value>
-                                      <InArgument x:TypeArguments="x:Double">[pretTotal + listaPreturi("fotograf_suplimentar")]</InArgument>
-                                    </Assign.Value>
-                                  </Assign>
-                                </Sequence>
-                              </If.Then>
-                              <If.Else>
-                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,24.8" sap2010:WorkflowViewState.IdRef="Sequence_25">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </Sequence>
-                              </If.Else>
-                            </If>
-                            <ui:InvokeCode ContinueOnError="{x:Null}" Code="' declara variabile&#xA;Dim intervale_orare As String() = In_intOrarStr.Split(&quot;-&quot;c)&#xA;Dim start As String() = intervale_orare(0).Split(&quot;:&quot;c)&#xA;Dim ora_start As Integer = CInt(start(0))&#xA;Dim minute_start As Double = CInt(start(1)) / 60&#xA;Dim start_valoare As Double = ora_start + minute_start&#xA;&#xA;Dim final As String() = intervale_orare(1).Split(&quot;:&quot;c)&#xA;Dim ora_final As Integer = CInt(final(0))&#xA;Dim minute_final As Double = CInt(final(1)) / 60&#xA;Dim final_valoare As Double = ora_final + minute_final&#xA;&#xA;' calcul&#xA;If final_valoare &lt; start_valoare Then&#xA;    final_valoare += 24 ' adauga 24 ore la final pentru a corecta intervalul care trece de miezul noptii&#xA;End If&#xA;Out_nrOre = final_valoare - start_valoare" DisplayName="Cod calculare numar ore din interval" sap:VirtualizedContainerService.HintSize="468.8,196.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
-                              <ui:InvokeCode.Arguments>
-                                <OutArgument x:TypeArguments="x:Double" x:Key="Out_nrOre">[numarOreCalc]</OutArgument>
-                                <InArgument x:TypeArguments="x:String" x:Key="In_intOrarStr">[intervalOrar]</InArgument>
-                              </ui:InvokeCode.Arguments>
-                            </ui:InvokeCode>
-                            <Assign sap:VirtualizedContainerService.HintSize="468.8,104.8" sap2010:WorkflowViewState.IdRef="Assign_15">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:Double">[pretTotal]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:Double">[pretTotal + (numarOreCalc * pretOra)]</InArgument>
-                              </Assign.Value>
-                            </Assign>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="617.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;Eroare generare PDF.&quot;]" />
+                            <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Caption="Eroare generare PDF" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="617.6,108.8" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Eroare generare PDF &quot; + exception.ToString]" />
                           </Sequence>
-                          <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="584,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_14" Replace="[pretOra.ToString]" ReplaceAll="False" Search="{}{Pret_ora}" />
-                          <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document" sap:VirtualizedContainerService.HintSize="584,196.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_13" Replace="[pretTotal.ToString]" ReplaceAll="False" Search="{}{Pret_total}" />
-                          <Assign sap:VirtualizedContainerService.HintSize="584,113.6" sap2010:WorkflowViewState.IdRef="Assign_16">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="x:String">[numeFisierGenerat]</OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="x:String">["Oferta_" + mailUtilizator + ".pdf"]</InArgument>
-                            </Assign.Value>
-                          </Assign>
-                          <p:WordExportToPdf DisplayName="Salvare fisier ca PDF" FilePath="[numeFisierGenerat]" sap:VirtualizedContainerService.HintSize="584,143.2" sap2010:WorkflowViewState.IdRef="WordExportToPdf_1" />
-                          <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[caleFolderPDF]" DisplayName="Muta fisier in folder" sap:VirtualizedContainerService.HintSize="584,183.2" sap2010:WorkflowViewState.IdRef="MoveFile_2" Overwrite="True" Path="[numeFisierGenerat]" />
-                        </Sequence>
-                      </ActivityAction>
-                    </p:WordApplicationScope.Body>
-                  </p:WordApplicationScope>
+                        </ActivityAction>
+                      </Catch>
+                    </TryCatch.Catches>
+                    <TryCatch.Finally>
+                      <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="651.2,89.6" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </TryCatch.Finally>
+                  </TryCatch>
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="684.8,89.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="686.4,89.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -771,6 +790,5 @@
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="721.6,99.2" sap2010:WorkflowViewState.IdRef="Comment_1" Text="todo - sa se updateze excel pe coloana confirmat cu da" />
   </Sequence>
 </Activity>

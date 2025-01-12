@@ -9,6 +9,7 @@
     "UiPath.GSuite.Activities": "[2.8.22]",
     "UiPath.Mail.Activities": "[1.24.11]",
     "UiPath.System.Activities": "[24.12.0-preview]",
+    "UiPath.WebAPI.Activities": "[1.21.0]",
     "UiPath.Word.Activities": "[1.20.3]"
   },
   "webServices": [],

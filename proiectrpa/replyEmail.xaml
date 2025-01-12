@@ -1,4 +1,14 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="replyEmail" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="replyEmail_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/credentials" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:umae="clr-namespace:UiPath.Mail.Activities.Enums;assembly=UiPath.Mail.Activities" xmlns:umame="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail.Enums;assembly=UiPath.Mail.Activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="replyEmail" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:umae="clr-namespace:UiPath.Mail.Activities.Enums;assembly=UiPath.Mail.Activities" xmlns:umame="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail.Enums;assembly=UiPath.Mail.Activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="In_mail" Type="InArgument(x:String)" />
+    <x:Property Name="In_pass" Type="InArgument(ss:SecureString)" />
+    <x:Property Name="In_excelPath" Type="InArgument(x:String)" />
+    <x:Property Name="In_folderPath" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>replyEmail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -112,22 +122,11 @@
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.CodedWorkflows</AssemblyReference>
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="replyEmail" sap:VirtualizedContainerService.HintSize="1452.0000000000002,1824.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="replyEmail" sap:VirtualizedContainerService.HintSize="885.6000000000001,1712" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="emailCredential">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">gmail_rpa</Literal>
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="x:String" Name="emailUsername" />
-      <Variable x:TypeArguments="ss:SecureString" Name="emailPassword" />
-      <Variable x:TypeArguments="x:String" Name="excelPath">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">informatii_email.xlsx</Literal>
-        </Variable.Default>
-      </Variable>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_Input" />
       <Variable x:TypeArguments="x:Int32" Name="rowIndex" />
     </Sequence.Variables>
@@ -136,8 +135,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <p:GetSecureCredential CredentialType="Generic" DisplayName="Get Secure Credentials" sap:VirtualizedContainerService.HintSize="548.8,112.8" sap2010:WorkflowViewState.IdRef="GetSecureCredential_1" Password="[emailPassword]" PersistanceType="Session" Target="[emailCredential]" Username="[emailUsername]" />
-    <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dt_Input]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="548.8,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="[excelPath]" />
+    <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dt_Input]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="548.8,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="[In_excelPath]" />
     <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[rowIndex]" DataTable="[dt_Input]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="548.8,1568.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
@@ -191,7 +189,7 @@
                             <OutArgument x:TypeArguments="x:String">[PDFPath]</OutArgument>
                           </ui:AssignOperation.To>
                           <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:String">["PDF_Docs/Oferta_" + CType(CurrentRow("Email"), String) + ".pdf"]</InArgument>
+                            <InArgument x:TypeArguments="x:String">[In_folderPath+"/Oferta_" + CType(CurrentRow("Email"), String) + ".pdf"]</InArgument>
                           </ui:AssignOperation.Value>
                         </ui:AssignOperation>
                       </scg:List>
@@ -206,7 +204,7 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" Result="{x:Null}" TimeoutMS="{x:Null}" AttachmentInputMode="Existing" Body="[&quot;Buna &quot; + userName +&quot;, &quot;+ Environment.NewLine + Environment.NewLine + &quot;Vă mulțumim pentru interesul acordat serviciilor noastre. Atașat acestui email găsiți oferta personalizată pentru evenimentul dumneavoastră. &quot;+Environment.NewLine+&quot;Dacă aveți întrebări suplimentare sau doriți să discutați detalii suplimentare, vă rugăm să ne contactați.&quot;+Environment.NewLine+ Environment.NewLine +&quot;O zi minunată!&quot;]" ConnectionId="3e53ce9d-2489-4d69-9191-7d9fd41177f5" DisplayName="Send SMTP Email" Email="[emailUsername]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="382.4,269.6" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="False" Port="587" ResourceAttachments="[{pdfFileResource}]" SecureConnection="Auto" SecurePassword="[emailPassword]" Server="smtp.gmail.com" Subject="[&quot;Reply cerere fotografie &quot; + userName]" To="[emailUser]" UseISConnection="False" UseOAuth="False">
+                        <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" Result="{x:Null}" TimeoutMS="{x:Null}" AttachmentInputMode="Existing" Body="[&quot;Buna &quot; + userName +&quot;, &quot;+ Environment.NewLine + Environment.NewLine + &quot;Vă mulțumim pentru interesul acordat serviciilor noastre. Atașat acestui email găsiți oferta personalizată pentru evenimentul dumneavoastră. &quot;+Environment.NewLine+&quot;Dacă aveți întrebări suplimentare sau doriți să discutați detalii suplimentare, vă rugăm să ne contactați.&quot;+Environment.NewLine+ Environment.NewLine +&quot;O zi minunată!&quot;]" ConnectionId="3e53ce9d-2489-4d69-9191-7d9fd41177f5" DisplayName="Send SMTP Email" Email="[In_mail]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="382.4,269.6" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="False" Port="587" ResourceAttachments="[{pdfFileResource}]" SecureConnection="Auto" SecurePassword="[In_pass]" Server="smtp.gmail.com" Subject="[&quot;Reply cerere fotografie &quot; + userName]" To="[emailUser]" UseISConnection="False" UseOAuth="False">
                           <ui:SendMail.AttachmentsBackup>
                             <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="Existing">
                               <usau:BackupSlot.BackupValues>
@@ -239,7 +237,7 @@
                       </Sequence>
                     </If.Else>
                   </If>
-                  <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;I&quot; + (rowIndex + 2).ToString]" DisplayName="Coloana: PDF" sap:VirtualizedContainerService.HintSize="478.4,139.2" sap2010:WorkflowViewState.IdRef="WriteCell_2" SheetName="Sheet1" Text="da" WorkbookPath="[excelPath]" />
+                  <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;I&quot; + (rowIndex + 2).ToString]" DisplayName="Coloana: PDF" sap:VirtualizedContainerService.HintSize="478.4,139.2" sap2010:WorkflowViewState.IdRef="WriteCell_2" SheetName="Sheet1" Text="da" WorkbookPath="[In_excelPath]" />
                 </Sequence>
               </If.Then>
               <If.Else>

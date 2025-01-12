@@ -1,0 +1,18 @@
+﻿{
+  "email_modules": {
+    "credential_name": "gmail_rpa"
+  },
+  "pdf_module": {
+    "folder_path": "PDF_Docs",
+    "pdf_template_path": "template_pdf.docx"
+  },
+  "common":{
+  	"excel_path":"informatii_email.xlsx"
+  },
+      "price_list": {
+		"base_price": 500,
+       "fotograf_suplimentar":500,
+    	"print_album": 200,
+    	"filmari": 350
+    }
+}
