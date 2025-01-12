@@ -237,7 +237,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="generarePDF" sap:VirtualizedContainerService.HintSize="885.6000000000001,8454.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="generarePDF" sap:VirtualizedContainerService.HintSize="1452.0000000000002,8603.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="informatii_email.xlsx" Name="caleExcel" />
       <Variable x:TypeArguments="sd:DataTable" Name="datatableExcel" />
@@ -249,6 +249,7 @@
       <Variable x:TypeArguments="x:Boolean" Name="optiuneFilmare" />
       <Variable x:TypeArguments="x:String" Default="PDF_Docs" Name="caleFolderPDF" />
       <Variable x:TypeArguments="x:String" Default="template_pdf.docx" Name="caleTemplateWord" />
+      <Variable x:TypeArguments="x:Int32" Name="rowIndex" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -313,21 +314,21 @@
         <InArgument x:TypeArguments="x:Double">500</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[datatableExcel]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="721.6,7444" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[rowIndex]" DataTable="[datatableExcel]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="721.6,7592" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="720,7262.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="720,7410.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[String.Equals(CType(CurrentRow(&quot;Confirmat&quot;), String).ToLower(), &quot;nu&quot;)]" sap:VirtualizedContainerService.HintSize="686.4,7202.4" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[String.Equals(CType(CurrentRow(&quot;Confirmat&quot;), String).ToLower(), &quot;nu&quot;)]" sap:VirtualizedContainerService.HintSize="686.4,7350.4" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="684.8,6983.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="684.8,7131.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="extraoptiuniText" />
                   </Sequence.Variables>
@@ -336,6 +337,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
+                  <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;J&quot; + (rowIndex + 2).ToString]" DisplayName="Coloana: PDF" sap:VirtualizedContainerService.HintSize="651.2,148" sap2010:WorkflowViewState.IdRef="WriteCell_2" SheetName="Sheet1" Text="da" WorkbookPath="[caleExcel]" />
                   <p:WordApplicationScope SensitivityLabel="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Word Application Scope" FilePath="[caleTemplateWord]" sap:VirtualizedContainerService.HintSize="651.2,6923.2" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1" ReadOnly="True" SensitivityOperation="None">
                     <p:WordApplicationScope.Body>
                       <ActivityAction x:TypeArguments="ui:WordDocument">
@@ -769,6 +771,6 @@
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="721.6,98.4" sap2010:WorkflowViewState.IdRef="Comment_1" Text="todo - sa se updateze excel pe coloana confirmat cu da" />
+    <ui:Comment sap:VirtualizedContainerService.HintSize="721.6,99.2" sap2010:WorkflowViewState.IdRef="Comment_1" Text="todo - sa se updateze excel pe coloana confirmat cu da" />
   </Sequence>
 </Activity>
