@@ -1,4 +1,8 @@
-proiectrpa/.local/*
-proiectrpa/.entities/*
-proiectrpa/.objects/*
-proiectrpa/.project/*
+/.local/*
+/.entities/*
+/.objects/*
+/.project/*
+/.settings/*
+/.templates/*
+/.tmh/*
+/PDF_Docs/*
