@@ -136,7 +136,7 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="getInfoEmails" sap:VirtualizedContainerService.HintSize="1452.0000000000002,8349.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="getInfoEmails" sap:VirtualizedContainerService.HintSize="1452.0000000000002,8429.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="emailList" />
       <Variable x:TypeArguments="x:String" Name="emailBody" />
@@ -153,15 +153,15 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="643.2,1349.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="643.2,1429.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="524.8,484.8" sap2010:WorkflowViewState.IdRef="Sequence_18">
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="524.8,564.8" sap2010:WorkflowViewState.IdRef="Sequence_18">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="491.2,424.8" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="2" RetryInterval="300.00:00:00">
+          <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="491.2,504.8" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="2" RetryInterval="300.00:00:00">
             <ui:RetryScope.ActivityBody>
               <ActivityAction>
                 <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="449.6,225.6" sap2010:WorkflowViewState.IdRef="Sequence_23">
@@ -429,15 +429,15 @@
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="502.4,275.2" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="502.4,275.2" sap2010:WorkflowViewState.IdRef="CommentOut_3">
                                   <ui:CommentOut.Body>
-                                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_36">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                      <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_12">
                                         <Assign.To>
                                           <OutArgument x:TypeArguments="x:String">[eventDate]</OutArgument>
                                         </Assign.To>
@@ -448,7 +448,7 @@
                                     </Sequence>
                                   </ui:CommentOut.Body>
                                 </ui:CommentOut>
-                                <ui:Matches BuilderPattern="\b(\d{1,2})[-./ ](ianuarie|februarie|martie|aprilie|mai|iunie|iulie|august|septembrie|octombrie|noiembrie|decembrie|\d{1,2})[-./ ](\d{4})\b" DisplayName="Matching pattern data" FirstMatch="[eventDate]" sap:VirtualizedContainerService.HintSize="502.4,92" sap2010:WorkflowViewState.IdRef="Matches_3" Input="[eventDate]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;\\b(\\d{1,2})[-.\/ ](ianuarie|februarie|martie|aprilie|mai|iunie|iulie|august|septembrie|octombrie|noiembrie|decembrie|\\d{1,2})[-.\/ ](\\d{4})\\b&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\b(\d{1,2})[-./ ](ianuarie|februarie|martie|aprilie|mai|iunie|iulie|august|septembrie|octombrie|noiembrie|decembrie|\d{1,2})[-./ ](\d{4})\b" RegexOption="IgnoreCase, Compiled" />
+                                <ui:Matches BuilderPattern="\b(\d{1,2})[-./ ](ianuarie|februarie|martie|aprilie|mai|iunie|iulie|august|septembrie|octombrie|noiembrie|decembrie|\d{1,2})[-./ ](\d{4})\b" DisplayName="Matching pattern data" FirstMatch="[eventDate]" sap:VirtualizedContainerService.HintSize="502.4,92" sap2010:WorkflowViewState.IdRef="Matches_3" Input="[currentText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;\\b(\\d{1,2})[-.\/ ](ianuarie|februarie|martie|aprilie|mai|iunie|iulie|august|septembrie|octombrie|noiembrie|decembrie|\\d{1,2})[-.\/ ](\\d{4})\\b&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\b(\d{1,2})[-./ ](ianuarie|februarie|martie|aprilie|mai|iunie|iulie|august|septembrie|octombrie|noiembrie|decembrie|\d{1,2})[-./ ](\d{4})\b" RegexOption="IgnoreCase, Compiled" />
                                 <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;F&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="502.4,139.2" sap2010:WorkflowViewState.IdRef="WriteCell_9" SheetName="Sheet1" Text="[eventDate]" WorkbookPath="[excelPath]" />
                               </Sequence>
                             </If.Then>
