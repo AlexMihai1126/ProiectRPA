@@ -136,7 +136,7 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="getInfoEmails" sap:VirtualizedContainerService.HintSize="885.6000000000001,7948" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="getInfoEmails" sap:VirtualizedContainerService.HintSize="1452.0000000000002,8349.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="emailList" />
       <Variable x:TypeArguments="x:String" Name="emailBody" />
@@ -146,18 +146,14 @@
       <Variable x:TypeArguments="x:Int32" Default="0" Name="counterMails" />
       <Variable x:TypeArguments="x:Int32" Name="excelRowsCount" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_Input" />
-      <Variable x:TypeArguments="x:String" Name="excelPath">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">informatii_email.xlsx</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="informatii_email.xlsx" Name="excelPath" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="584,1349.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="643.2,1349.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
         <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="524.8,484.8" sap2010:WorkflowViewState.IdRef="Sequence_18">
           <sap:WorkflowViewStateService.ViewState>
@@ -230,7 +226,7 @@
         </Sequence>
       </TryCatch.Finally>
     </TryCatch>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="584,1036" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="643.2,1036" sap2010:WorkflowViewState.IdRef="TryCatch_3">
       <TryCatch.Try>
         <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="416,171.2" sap2010:WorkflowViewState.IdRef="Sequence_27">
           <Sequence.Variables>
@@ -280,7 +276,7 @@
         </Sequence>
       </TryCatch.Finally>
     </TryCatch>
-    <Assign DisplayName="Number of rows in excel before running" sap:VirtualizedContainerService.HintSize="584,113.6" sap2010:WorkflowViewState.IdRef="Assign_10">
+    <Assign DisplayName="Number of rows in excel before running" sap:VirtualizedContainerService.HintSize="643.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_10">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[excelRowsCount]</OutArgument>
       </Assign.To>
@@ -288,13 +284,13 @@
         <InArgument x:TypeArguments="x:Int32">[dt_Input.Rows.Count]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each currentMailMessage" sap:VirtualizedContainerService.HintSize="584,5425.6" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[emailList]">
+    <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each currentMailMessage" sap:VirtualizedContainerService.HintSize="643.2,5827.2" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[emailList]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="snm:MailMessage">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="currentMailMessage" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="582.4,5304" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="641.6,5705.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="s:String[]" Name="emailBodyLines" />
               <Variable x:TypeArguments="x:String" Name="emailBodyNormalized" />
@@ -304,7 +300,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="548.8,242.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="608,242.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -342,9 +338,9 @@
                 </scg:List>
               </ui:MultipleAssign.AssignOperations>
             </ui:MultipleAssign>
-            <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="incercare.txt" sap:VirtualizedContainerService.HintSize="548.8,166.4" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[emailBody]" />
-            <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;B&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="548.8,148" sap2010:WorkflowViewState.IdRef="WriteCell_13" SheetName="Sheet1" Text="[emailSender]" WorkbookPath="[excelPath]" />
-            <Assign sap:VirtualizedContainerService.HintSize="548.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_6">
+            <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="incercare.txt" sap:VirtualizedContainerService.HintSize="608,166.4" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[emailBody]" />
+            <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;B&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="608,148" sap2010:WorkflowViewState.IdRef="WriteCell_13" SheetName="Sheet1" Text="[emailSender]" WorkbookPath="[excelPath]" />
+            <Assign sap:VirtualizedContainerService.HintSize="608,113.6" sap2010:WorkflowViewState.IdRef="Assign_6">
               <Assign.To>
                 <OutArgument x:TypeArguments="s:String[]">[emailBodyLines]</OutArgument>
               </Assign.To>
@@ -352,13 +348,13 @@
                 <InArgument x:TypeArguments="s:String[]">[emailBody.Split(Environment.NewLine.ToArray, StringSplitOptions.RemoveEmptyEntries)]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each currentText" sap:VirtualizedContainerService.HintSize="548.8,4468.8" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[emailBodyLines]">
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each currentText" sap:VirtualizedContainerService.HintSize="608,4870.4" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[emailBodyLines]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:String">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:String" Name="currentText" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="547.2,4338.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="606.4,4740" sap2010:WorkflowViewState.IdRef="Sequence_4">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="eventMentions" />
                       <Variable x:TypeArguments="x:String" Name="senderPhoneNumber" />
@@ -371,16 +367,16 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="513.6,4278.4" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="572.8,4680" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                       <TryCatch.Try>
-                        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="512,3680.8" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="571.2,4082.4" sap2010:WorkflowViewState.IdRef="Sequence_32">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:Matches BuilderPattern="\+?\d[\d\s\-().]{8,}" DisplayName="Find Phone Pattern" FirstMatch="[senderPhoneNumber]" sap:VirtualizedContainerService.HintSize="478.4,92" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[emailBodyLines.Last]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;\\+?\\d[\\d\\s\\-().]{8,}&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\+?\d[\d\s\-().]{8,}" RegexOption="IgnoreCase, Compiled" />
-                          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478.4,149.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                          <ui:Matches BuilderPattern="\+?\d[\d\s\-().]{8,}" DisplayName="Find Phone Pattern" FirstMatch="[senderPhoneNumber]" sap:VirtualizedContainerService.HintSize="537.6,92" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[emailBodyLines.Last]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;\\+?\\d[\\d\\s\\-().]{8,}&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\+?\d[\d\s\-().]{8,}" RegexOption="IgnoreCase, Compiled" />
+                          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="537.6,149.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
                             <ui:MultipleAssign.AssignOperations>
                               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
@@ -394,9 +390,9 @@
                               </scg:List>
                             </ui:MultipleAssign.AssignOperations>
                           </ui:MultipleAssign>
-                          <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;A&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="478.4,148" sap2010:WorkflowViewState.IdRef="WriteCell_2" SheetName="Sheet1" Text="[senderName]" WorkbookPath="[excelPath]" />
-                          <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;C&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="478.4,148" sap2010:WorkflowViewState.IdRef="WriteCell_3" SheetName="Sheet1" Text="[senderPhoneNumber]" WorkbookPath="[excelPath]" />
-                          <If Condition="[currentText.ToLower().Contains(&quot;tipul&quot;)]" sap:VirtualizedContainerService.HintSize="478.4,540.8" sap2010:WorkflowViewState.IdRef="If_1">
+                          <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;A&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="537.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_2" SheetName="Sheet1" Text="[senderName]" WorkbookPath="[excelPath]" />
+                          <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;C&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="537.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_3" SheetName="Sheet1" Text="[senderPhoneNumber]" WorkbookPath="[excelPath]" />
+                          <If Condition="[currentText.ToLower().Contains(&quot;tipul&quot;)]" sap:VirtualizedContainerService.HintSize="537.6,540.8" sap2010:WorkflowViewState.IdRef="If_1">
                             <If.Then>
                               <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,312.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
                                 <sap:WorkflowViewStateService.ViewState>
@@ -425,27 +421,39 @@
                               </Sequence>
                             </If.Else>
                           </If>
-                          <If Condition="[currentText.toLower().contains(&quot;data&quot;)]" sap:VirtualizedContainerService.HintSize="478.4,540.8" sap2010:WorkflowViewState.IdRef="If_2">
+                          <If Condition="[currentText.toLower().contains(&quot;data&quot;)]" sap:VirtualizedContainerService.HintSize="537.6,794.4" sap2010:WorkflowViewState.IdRef="If_2">
                             <If.Then>
-                              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,312.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="536,566.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_3">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:String">[eventDate]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:String">[currentText.Split(":"c)(1).Trim().TrimEnd("."c)]</InArgument>
-                                  </Assign.Value>
-                                </Assign>
-                                <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;F&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="433.6,139.2" sap2010:WorkflowViewState.IdRef="WriteCell_9" SheetName="Sheet1" Text="[eventDate]" WorkbookPath="[excelPath]" />
+                                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="502.4,275.2" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                                  <ui:CommentOut.Body>
+                                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[eventDate]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">[currentText.Split(":"c)(1).Trim().TrimEnd("."c)]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </ui:CommentOut.Body>
+                                </ui:CommentOut>
+                                <ui:Matches BuilderPattern="\b(\d{1,2})[-./ ](ianuarie|februarie|martie|aprilie|mai|iunie|iulie|august|septembrie|octombrie|noiembrie|decembrie|\d{1,2})[-./ ](\d{4})\b" DisplayName="Matching pattern data" FirstMatch="[eventDate]" sap:VirtualizedContainerService.HintSize="502.4,92" sap2010:WorkflowViewState.IdRef="Matches_3" Input="[eventDate]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;\\b(\\d{1,2})[-.\/ ](ianuarie|februarie|martie|aprilie|mai|iunie|iulie|august|septembrie|octombrie|noiembrie|decembrie|\\d{1,2})[-.\/ ](\\d{4})\\b&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\b(\d{1,2})[-./ ](ianuarie|februarie|martie|aprilie|mai|iunie|iulie|august|septembrie|octombrie|noiembrie|decembrie|\d{1,2})[-./ ](\d{4})\b" RegexOption="IgnoreCase, Compiled" />
+                                <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;F&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="502.4,139.2" sap2010:WorkflowViewState.IdRef="WriteCell_9" SheetName="Sheet1" Text="[eventDate]" WorkbookPath="[excelPath]" />
                               </Sequence>
                             </If.Then>
                             <If.Else>
-                              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,89.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="536,89.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -454,7 +462,7 @@
                               </Sequence>
                             </If.Else>
                           </If>
-                          <If Condition="[currentText.ToLower().Replace(&quot;ț&quot;, &quot;t&quot;).Contains(&quot;locatia&quot;) = true]" sap:VirtualizedContainerService.HintSize="478.4,540.8" sap2010:WorkflowViewState.IdRef="If_5">
+                          <If Condition="[currentText.ToLower().Replace(&quot;ț&quot;, &quot;t&quot;).Contains(&quot;locatia&quot;) = true]" sap:VirtualizedContainerService.HintSize="537.6,540.8" sap2010:WorkflowViewState.IdRef="If_5">
                             <If.Then>
                               <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,312.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
                                 <Sequence.Variables>
@@ -486,7 +494,7 @@
                               </Sequence>
                             </If.Else>
                           </If>
-                          <If Condition="[currentText.ToLower().Contains(&quot;interval&quot;)]" sap:VirtualizedContainerService.HintSize="478.4,632.8" sap2010:WorkflowViewState.IdRef="If_8">
+                          <If Condition="[currentText.ToLower().Contains(&quot;interval&quot;)]" sap:VirtualizedContainerService.HintSize="537.6,632.8" sap2010:WorkflowViewState.IdRef="If_8">
                             <If.Then>
                               <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,404.8" sap2010:WorkflowViewState.IdRef="Sequence_13">
                                 <Sequence.Variables>
@@ -520,7 +528,7 @@
                               </Sequence>
                             </If.Else>
                           </If>
-                          <If Condition="[currentText.ToLower().Replace(&quot;ț&quot;, &quot;t&quot;).Contains(&quot;mentiuni&quot;)]" sap:VirtualizedContainerService.HintSize="478.4,540.8" sap2010:WorkflowViewState.IdRef="If_6">
+                          <If Condition="[currentText.ToLower().Replace(&quot;ț&quot;, &quot;t&quot;).Contains(&quot;mentiuni&quot;)]" sap:VirtualizedContainerService.HintSize="537.6,540.8" sap2010:WorkflowViewState.IdRef="If_6">
                             <If.Then>
                               <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,312.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
                                 <sap:WorkflowViewStateService.ViewState>
@@ -549,8 +557,9 @@
                               </Sequence>
                             </If.Else>
                           </If>
-                          <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;I&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Coloana: Confirmat" sap:VirtualizedContainerService.HintSize="478.4,148" sap2010:WorkflowViewState.IdRef="WriteCell_15" SheetName="Sheet1" Text="nu" WorkbookPath="[excelPath]" />
-                          <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;J&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Coloana: PDF" sap:VirtualizedContainerService.HintSize="478.4,139.2" sap2010:WorkflowViewState.IdRef="WriteCell_18" SheetName="Sheet1" Text="nu" WorkbookPath="[excelPath]" />
+                          <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;I&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Coloana: Confirmat" sap:VirtualizedContainerService.HintSize="537.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_15" SheetName="Sheet1" Text="nu" WorkbookPath="[excelPath]" />
+                          <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;J&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Coloana: PDF" sap:VirtualizedContainerService.HintSize="537.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_18" SheetName="Sheet1" Text="nu" WorkbookPath="[excelPath]" />
+                          <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;K&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Coloana: Cod" sap:VirtualizedContainerService.HintSize="537.6,139.2" sap2010:WorkflowViewState.IdRef="WriteCell_19" SheetName="Sheet1" Text="[New Random().Next(10000, 99999).ToString()]" WorkbookPath="[excelPath]" />
                         </Sequence>
                       </TryCatch.Try>
                       <TryCatch.Catches>
@@ -559,20 +568,20 @@
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                             </ActivityAction.Argument>
-                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="512,343.2" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="571.2,343.2" sap2010:WorkflowViewState.IdRef="Sequence_34">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Error" Message="[&quot;Eroare la scrierea datelor în fișierul Excel: &quot; + exception.Message]" />
-                              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="478.4,108.8" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Eroare la scrierea datelor în fișierul Excel: &quot;]" />
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="537.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Error" Message="[&quot;Eroare la scrierea datelor în fișierul Excel: &quot; + exception.Message]" />
+                              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="537.6,108.8" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Eroare la scrierea datelor în fișierul Excel: &quot;]" />
                             </Sequence>
                           </ActivityAction>
                         </Catch>
                       </TryCatch.Catches>
                       <TryCatch.Finally>
-                        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="512,89.6" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="571.2,89.6" sap2010:WorkflowViewState.IdRef="Sequence_33">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -591,7 +600,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:ForEach>
-            <Assign sap:VirtualizedContainerService.HintSize="548.8,104.8" sap2010:WorkflowViewState.IdRef="Assign_8">
+            <Assign sap:VirtualizedContainerService.HintSize="608,104.8" sap2010:WorkflowViewState.IdRef="Assign_8">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Int32">[counterMails]</OutArgument>
               </Assign.To>
