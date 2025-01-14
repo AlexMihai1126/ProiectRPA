@@ -87,7 +87,7 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1452.0000000000002,1492" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="885.6000000000001,1492" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="cfg_credentialName" />
       <Variable x:TypeArguments="x:String" Name="cfg_folderPath" />
@@ -112,32 +112,32 @@
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <p:GetSecureCredential CredentialType="Generic" DisplayName="Get Secure Credentials" sap:VirtualizedContainerService.HintSize="484.8,112.8" sap2010:WorkflowViewState.IdRef="GetSecureCredential_1" Password="[cred_pass]" PersistanceType="Enterprise" Target="[cfg_credentialName]" Username="[cred_email]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="getInfoEmails - Invoke Workflow File (getInfoEmails.xaml)" sap:VirtualizedContainerService.HintSize="484.8,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="getInfoEmails.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="In_mail">[cred_email]</InArgument>
-        <InArgument x:TypeArguments="ss:SecureString" x:Key="In_pass">[cred_pass]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="In_excelPath">[cfg_excelPath]</InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484.8,337.6" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484.8,337.6" sap2010:WorkflowViewState.IdRef="CommentOut_4">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,227.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,227.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="generarePDF - Invoke Workflow File (generarePDF.xaml)" sap:VirtualizedContainerService.HintSize="416,167.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="generarePDF.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="getInfoEmails - Invoke Workflow File (getInfoEmails.xaml)" sap:VirtualizedContainerService.HintSize="416,167.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="getInfoEmails.xaml">
             <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="In_mail">[cred_email]</InArgument>
+              <InArgument x:TypeArguments="ss:SecureString" x:Key="In_pass">[cred_pass]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="In_excelPath">[cfg_excelPath]</InArgument>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)" x:Key="In_priceList">[cfg_priceList]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="In_folderPath">[cfg_folderPath]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="In_templatePath">[cfg_pdfTemplatePath]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
       </ui:CommentOut.Body>
     </ui:CommentOut>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="generarePDF - Invoke Workflow File (generarePDF.xaml)" sap:VirtualizedContainerService.HintSize="484.8,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="generarePDF.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="In_excelPath">[cfg_excelPath]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)" x:Key="In_priceList">[cfg_priceList]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_folderPath">[cfg_folderPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_templatePath">[cfg_pdfTemplatePath]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484.8,337.6" sap2010:WorkflowViewState.IdRef="CommentOut_3">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,227.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
