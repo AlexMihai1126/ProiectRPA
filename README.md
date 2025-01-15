@@ -19,23 +19,21 @@ Scopul proiectului este de a reduce timpul necesar procesării solicitărilor, d
 
 ## Funcționalități principale ⚙️
 
-1.	Logica proiectului impartita in workflow-uri multiple (Flowchart + Sequence in functie de caz). Proiectul trebuie sa fie alcatuit din mai multe fisiere xaml, fiecare fisier fiind invocat in Main (Invoke Workflow)
+1.	Logica proiectului impărțită in workflow-uri multiple (Sequences). Proiectul este alcătuit din mai multe fisiere xaml, fiecare fișier fiind invocat în Main cu Invoke Workflow.
    
-2.	Folosirea mai multor tipuri de variabile (String, Int, Double, List, Array, Datatable, etc)
+2.	Se folosesc mai multe tipuri de variabile (String, Int, Double, List, Array, Datatable, Dictionary).
 
-3.	Automatizare fisiere Excel (citire date/scriere date/procesare) 
+3.	Automatizare fișiere Excel (citire date/scriere date/procesare).
    
-4.	Automatizare fisiere PDF (native/image) 
+4.	Automatizare fișiere native PDF.
    
-5.	Automatizare aplicatii web/aplicatii desktop (folosirea de activitati de UI cu selectori stabili si folosirea wildcard-urilor, introducere date, extragere date, etc.)
+5.	Automatizare aplicație web - Google Calendar (folosind activități de UI cu selectori stabili și folosirea wildcard-urilor, click, type into).
    
-6.	Tratare exceptii de baza (validarea datelor extrase/introduse, verificarea incarcarii paginilor/elementelor cu Element Exists, folosirea mecanismelor de Retry) Tratare de exceptii folosind Try Catch, Throw, Rethrow 
-
-7. 	Functionarea proiectului la schimbarea datelor de test 
+6.	Tratare excepții de bază (validarea datelor extrase, verificarea incărcării paginii cu Element Exists) Tratare de excepții folosind Try/Catch, Throw, Rethrow.
    
-8.	Automatizare Email (citire sau trimitere email)
+7.	Automatizare Email (citire și trimitere email).
    
-9.	Folosire fisier de configurare (json sau excel)
+8.	Folosire fișier de configurare JSON.
 
 ## Cerințe pentru rulare 📌
 
