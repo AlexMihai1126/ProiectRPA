@@ -14,5 +14,9 @@
        "fotograf_suplimentar":500,
     	"print_album": 200,
     	"filmari": 350
-    }
+    },
+	  "calendar_module":{
+	  	"url":"https://calendar.google.com/calendar/u/0/r",
+		  "username":"fotografieRPA"
+	  }
 }

@@ -272,7 +272,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="getInfoEmails" sap:VirtualizedContainerService.HintSize="1452.0000000000002,13776.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="getInfoEmails" sap:VirtualizedContainerService.HintSize="809.6000000000001,13486.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="emailList" />
       <Variable x:TypeArguments="x:String" Name="emailBody" />
@@ -282,7 +282,7 @@
       <Variable x:TypeArguments="x:Int32" Name="counterMails" />
       <Variable x:TypeArguments="x:Int32" Name="excelRowsCount" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_Input" />
-      <Variable x:TypeArguments="x:String" Default="informatii_email.xlsx" Name="excelPath" />
+      <Variable x:TypeArguments="x:String" Name="excelPath" />
       <Variable x:TypeArguments="x:Boolean" Default="True" Name="validMail" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -290,46 +290,39 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="643.2,1349.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <Assign sap:VirtualizedContainerService.HintSize="643.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_24">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[excelPath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[In_excelPath]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="643.2,945.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="524.8,484.8" sap2010:WorkflowViewState.IdRef="Sequence_18">
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="416,400" sap2010:WorkflowViewState.IdRef="Sequence_18">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="491.2,424.8" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="2" RetryInterval="300.00:00:00">
-            <ui:RetryScope.ActivityBody>
-              <ActivityAction>
-                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="449.6,225.6" sap2010:WorkflowViewState.IdRef="Sequence_23">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" DeleteMessages="{x:Null}" FilterExpression="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" ConnectionId="3e53ce9d-2489-4d69-9191-7d9fd41177f5" DisplayName="Get IMAP Email List" Email="[In_mail]" EnableSSL="True" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" IgnoreCRL="False" MailFolder="Inbox" MarkAsRead="True" Messages="[emailList]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Port="993" SecureConnection="Auto" SecurePassword="[In_pass]" Server="imap.gmail.com" Top="30" UseISConnection="False" UseOAuth="False">
-                    <ui:GetIMAPMailMessages.ConnectionDetailsBackupSlot>
-                      <usau:BackupSlot x:TypeArguments="umae:ConnectionDetails" StoredValue="LegacyConfiguration">
-                        <usau:BackupSlot.BackupValues>
-                          <scg:List x:TypeArguments="x:Object" x:Key="IntegrationService" Capacity="1">
-                            <x:String>3e53ce9d-2489-4d69-9191-7d9fd41177f5</x:String>
-                          </scg:List>
-                        </usau:BackupSlot.BackupValues>
-                      </usau:BackupSlot>
-                    </ui:GetIMAPMailMessages.ConnectionDetailsBackupSlot>
-                  </ui:GetIMAPMailMessages>
-                </Sequence>
-              </ActivityAction>
-            </ui:RetryScope.ActivityBody>
-            <ui:RetryScope.Condition>
-              <ActivityFunc x:TypeArguments="x:Boolean" />
-            </ui:RetryScope.Condition>
-          </ui:RetryScope>
+          <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" DeleteMessages="{x:Null}" FilterExpression="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" ConnectionId="3e53ce9d-2489-4d69-9191-7d9fd41177f5" DisplayName="Get IMAP Email List" Email="[In_mail]" EnableSSL="True" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" IgnoreCRL="False" MailFolder="Inbox" MarkAsRead="True" Messages="[emailList]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Port="993" SecureConnection="Auto" SecurePassword="[In_pass]" Server="imap.gmail.com" Top="30" UseISConnection="False" UseOAuth="False">
+            <ui:GetIMAPMailMessages.ConnectionDetailsBackupSlot>
+              <usau:BackupSlot x:TypeArguments="umae:ConnectionDetails" StoredValue="LegacyConfiguration">
+                <usau:BackupSlot.BackupValues>
+                  <scg:List x:TypeArguments="x:Object" x:Key="IntegrationService" Capacity="1">
+                    <x:String>3e53ce9d-2489-4d69-9191-7d9fd41177f5</x:String>
+                  </scg:List>
+                </usau:BackupSlot.BackupValues>
+              </usau:BackupSlot>
+            </ui:GetIMAPMailMessages.ConnectionDetailsBackupSlot>
+          </ui:GetIMAPMailMessages>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Autentificare gmail cu succes&quot;]" />
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
@@ -338,27 +331,25 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="524.8,465.6" sap2010:WorkflowViewState.IdRef="Sequence_20">
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,282.4" sap2010:WorkflowViewState.IdRef="Sequence_20">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="491.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Error" Message="[&quot;Eroare la autentificare gmail&quot;]" />
-              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="491.2,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Eroare la autentificare gmail&quot;]" />
-              <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="491.2,113.6" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_2" Reason="[Nothing]" />
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Error" Message="[&quot;Eroare la autentificare gmail&quot;]" />
+              <Rethrow sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
             </Sequence>
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
       <TryCatch.Finally>
-        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="524.8,225.6" sap2010:WorkflowViewState.IdRef="Sequence_19">
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="416,89.6" sap2010:WorkflowViewState.IdRef="Sequence_19">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="491.2,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Autentificare gmail cu succes&quot;]" />
         </Sequence>
       </TryCatch.Finally>
     </TryCatch>
@@ -968,7 +959,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:Comment sap:VirtualizedContainerService.HintSize="382.4,164.8" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// daca mail-ul citit este invalid, se trimite catre user un reply in care este mentionat ca mail-ul nu respecta template-ul, iar informatiile din acest mail nu vor fi introduse in excel&#xD;&#xA;" />
+                  <ui:Comment sap:VirtualizedContainerService.HintSize="382.4,164.8" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// daca mail-ul citit este invalid, se trimite catre user un reply in care este mentionat ca mail-ul nu respecta template-ul, iar informatiile din acest mail nu vor fi introduse in excel&#xA;" />
                   <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" TimeoutMS="{x:Null}" AttachmentInputMode="Existing" Body="[&quot;Buna &quot; + senderName +&quot;, &quot;+ Environment.NewLine + Environment.NewLine +&quot;Vă mulțumim pentru mesajul dumneavoastră. Din păcate, email-ul trimis nu respectă template-ul cerut sau este completat greșit și nu poate fi procesat. Vă rugăm să-l refaceti conform formatului solicitat și să îl retransmiteți.&quot;+Environment.NewLine+ Environment.NewLine +&quot;O zi minunată!&quot;]" ConnectionId="3e53ce9d-2489-4d69-9191-7d9fd41177f5" DisplayName="Send SMTP Email" Email="[In_mail]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="382.4,269.6" sap2010:WorkflowViewState.IdRef="SendMail_3" IgnoreCRL="False" IsBodyHtml="False" MailMessage="[currentMailMessage]" Port="587" SecureConnection="Auto" SecurePassword="[In_pass]" Server="smtp.gmail.com" Subject="[&quot;Reply corectare cerere &quot; + senderName]" To="[emailSender]" UseISConnection="False" UseOAuth="False">
                     <ui:SendMail.AttachmentsBackup>
                       <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="Existing">

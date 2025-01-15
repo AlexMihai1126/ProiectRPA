@@ -1,4 +1,12 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="putEventCalendar" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="putEventCalendar_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="putEventCalendar" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="In_calendarLink" Type="InArgument(x:String)" />
+    <x:Property Name="In_loginUser" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>putEventCalendar_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -124,10 +132,10 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="putEventCalendar" sap:VirtualizedContainerService.HintSize="1452.0000000000002,5088.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="putEventCalendar" sap:VirtualizedContainerService.HintSize="809.6000000000001,5391.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Default="https://calendar.google.com/calendar/u/0/r" Name="linkGoogleCalendar" />
-      <Variable x:TypeArguments="x:String" Default="fotografieRPA" Name="emailUser" />
+      <Variable x:TypeArguments="x:String" Name="linkGoogleCalendar" />
+      <Variable x:TypeArguments="x:String" Name="emailUser" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -135,13 +143,35 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:Comment sap:VirtualizedContainerService.HintSize="651.2,107.2" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//vom fi direct logati pe calendar cu contul de gmail pentru a evita trimiterea acelui cod&#xA;" />
-    <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="651.2,4958.4" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[linkGoogleCalendar]">
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="651.2,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_18">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[linkGoogleCalendar]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[In_calendarLink]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_19">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[emailUser]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[In_loginUser]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="651.2,5080.8" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[linkGoogleCalendar]">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="617.6,4809.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="617.6,4932" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="extractedUser" />
             </Sequence.Variables>
@@ -166,7 +196,7 @@
                 <OutArgument x:TypeArguments="x:String">[extractedUser]</OutArgument>
               </ui:GetValue.Value>
             </ui:GetValue>
-            <If Condition="[extractedUser.ToLower().Trim() = emailUser.ToLower().Trim()]" sap:VirtualizedContainerService.HintSize="584,4553.6" sap2010:WorkflowViewState.IdRef="If_3">
+            <If Condition="[extractedUser.ToLower().Trim() = emailUser.ToLower().Trim()]" sap:VirtualizedContainerService.HintSize="584,4676" sap2010:WorkflowViewState.IdRef="If_3">
               <If.Then>
                 <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="582.4,4198.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
                   <Sequence.Variables>
@@ -285,7 +315,7 @@
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:Comment sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// in google calendar formatul datei este&#xD;&#xA;mm.dd.yyyy " />
+                                      <ui:Comment sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// in google calendar formatul datei este&#xA;mm.dd.yyyy " />
                                       <Assign DisplayName="Formatam data" sap:VirtualizedContainerService.HintSize="433.6,106.4" sap2010:WorkflowViewState.IdRef="Assign_1">
                                         <Assign.To>
                                           <OutArgument x:TypeArguments="x:String">[formattedEventDate]</OutArgument>
@@ -627,13 +657,14 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="582.4,225.6" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="582.4,348" sap2010:WorkflowViewState.IdRef="Sequence_9">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="548.8,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Warn" Message="[&quot;Username-ul logat si username-ul din variabila emailUser nu coincid!&quot;]" />
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="548.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Error" Message="[&quot;Username-ul logat si username-ul din variabila emailUser nu coincid!&quot;]" />
+                  <Throw Exception="[New BusinessRuleException(&quot;Mail-ul pe care trebuie sa se incarce calendarul nu coincide cu cel de pe website.&quot;)]" sap:VirtualizedContainerService.HintSize="548.8,113.6" sap2010:WorkflowViewState.IdRef="Throw_1" />
                 </Sequence>
               </If.Else>
             </If>

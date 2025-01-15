@@ -247,25 +247,24 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="generarePDF" sap:VirtualizedContainerService.HintSize="809.6000000000001,10816.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="generarePDF" sap:VirtualizedContainerService.HintSize="809.6000000000001,11044" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="datatableExcel" />
       <Variable x:TypeArguments="x:Int32" Name="nrOreCalculat" />
       <Variable x:TypeArguments="x:Int32" Name="rowIndex" />
-      <Variable x:TypeArguments="x:String" Default="informatii_email.xlsx" Name="excelPath" />
-      <Variable x:TypeArguments="x:String" Default="template_pdf.docx" Name="templatePath" />
-      <Variable x:TypeArguments="x:String" Default="PDF_Docs" Name="folderPath" />
+      <Variable x:TypeArguments="x:String" Name="excelPath" />
+      <Variable x:TypeArguments="x:String" Name="templatePath" />
+      <Variable x:TypeArguments="x:String" Name="folderPath" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="723.2,1458.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="723.2,1604.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="451.2,729.6" sap2010:WorkflowViewState.IdRef="Sequence_26">
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="512,941.6" sap2010:WorkflowViewState.IdRef="Sequence_26">
           <Sequence.Variables>
-            <Variable x:TypeArguments="x:String" Name="In_excelPath" />
             <Variable x:TypeArguments="x:Boolean" Name="folderExists" />
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
@@ -273,9 +272,39 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[datatableExcel]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="417.6,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="[excelPath]" />
-          <ui:FolderExistsX DisplayName="Folder Exists" Exists="[folderExists]" sap:VirtualizedContainerService.HintSize="417.6,166.4" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[folderPath]" />
-          <If Condition="[folderExists &lt;&gt; True]" sap:VirtualizedContainerService.HintSize="417.6,383.2" sap2010:WorkflowViewState.IdRef="If_11">
+          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478.4,212" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
+            <ui:MultipleAssign.AssignOperations>
+              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[excelPath]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">[In_excelPath]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[templatePath]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">[In_templatePath]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[folderPath]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">[In_folderPath]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+              </scg:List>
+            </ui:MultipleAssign.AssignOperations>
+          </ui:MultipleAssign>
+          <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[datatableExcel]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="478.4,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="[excelPath]" />
+          <ui:FolderExistsX DisplayName="Folder Exists" Exists="[folderExists]" sap:VirtualizedContainerService.HintSize="478.4,166.4" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[folderPath]" />
+          <If Condition="[folderExists &lt;&gt; True]" sap:VirtualizedContainerService.HintSize="478.4,383.2" sap2010:WorkflowViewState.IdRef="If_11">
             <If.Then>
               <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,164" sap2010:WorkflowViewState.IdRef="Sequence_31">
                 <sap:WorkflowViewStateService.ViewState>
@@ -304,21 +333,21 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="451.2,465.6" sap2010:WorkflowViewState.IdRef="Sequence_28">
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="512,400" sap2010:WorkflowViewState.IdRef="Sequence_28">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="417.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error" Message="[&quot;Eroare la citire date din Excel&quot;]" />
-              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="417.6,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Eroare citire date din Excel: &quot; + exception.ToString]" />
-              <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="417.6,113.6" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" Reason="Eroare de citire date din Excel" />
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error" Message="[&quot;Eroare la citire date din Excel&quot;]" />
+              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="478.4,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Eroare citire date din Excel: &quot; + exception.ToString]" />
+              <Rethrow sap:VirtualizedContainerService.HintSize="478.4,48" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
             </Sequence>
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
       <TryCatch.Finally>
-        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="451.2,89.6" sap2010:WorkflowViewState.IdRef="Sequence_27">
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="512,89.6" sap2010:WorkflowViewState.IdRef="Sequence_27">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -327,15 +356,19 @@
         </Sequence>
       </TryCatch.Finally>
     </TryCatch>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[rowIndex]" DataTable="[datatableExcel]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="723.2,9335.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[rowIndex]" DataTable="[datatableExcel]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="723.2,9416" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="721.6,8950.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="721.6,9243.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
-              <Variable x:TypeArguments="x:Boolean" Name="successfulWrite" />
+              <Variable x:TypeArguments="x:Boolean" Name="successfulWrite">
+                <Variable.Default>
+                  <Literal x:TypeArguments="x:Boolean" />
+                </Variable.Default>
+              </Variable>
               <Variable x:TypeArguments="x:String" Name="offerCode" />
               <Variable x:TypeArguments="x:String" Name="mailUtilizator" />
             </Sequence.Variables>
@@ -344,9 +377,9 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[String.Equals(CType(CurrentRow(&quot;Confirmat&quot;), String).ToLower(), &quot;nu&quot;)]" sap:VirtualizedContainerService.HintSize="688,7640" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[String.Equals(CType(CurrentRow(&quot;Confirmat&quot;), String).ToLower(), &quot;nu&quot;)]" sap:VirtualizedContainerService.HintSize="688,7876" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="686.4,7412" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="686.4,7648" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="extraoptiuniText" />
                   </Sequence.Variables>
@@ -355,33 +388,21 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="652.8,7352" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="652.8,7588" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                     <TryCatch.Try>
-                      <p:WordApplicationScope SensitivityLabel="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Word Application Scope" FilePath="[templatePath]" sap:VirtualizedContainerService.HintSize="651.2,6732" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1" ReadOnly="True" SensitivityOperation="None">
+                      <p:WordApplicationScope SensitivityLabel="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Word Application Scope" FilePath="[templatePath]" sap:VirtualizedContainerService.HintSize="651.2,6845.6" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1" ReadOnly="True" SensitivityOperation="None">
                         <p:WordApplicationScope.Body>
                           <ActivityAction x:TypeArguments="ui:WordDocument">
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
                             </ActivityAction.Argument>
-                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="617.6,6622.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="617.6,6736" sap2010:WorkflowViewState.IdRef="Sequence_5">
                               <Sequence.Variables>
                                 <Variable x:TypeArguments="x:Double" Name="pretTotal" />
                                 <Variable x:TypeArguments="x:String" Name="numeFisierGenerat" />
-                                <Variable x:TypeArguments="x:Boolean" Name="optiuneFotograf">
-                                  <Variable.Default>
-                                    <Literal x:TypeArguments="x:Boolean" />
-                                  </Variable.Default>
-                                </Variable>
-                                <Variable x:TypeArguments="x:Boolean" Name="optiuneFilmare">
-                                  <Variable.Default>
-                                    <Literal x:TypeArguments="x:Boolean" />
-                                  </Variable.Default>
-                                </Variable>
-                                <Variable x:TypeArguments="x:Boolean" Name="optiuneAlbum">
-                                  <Variable.Default>
-                                    <Literal x:TypeArguments="x:Boolean" />
-                                  </Variable.Default>
-                                </Variable>
+                                <Variable x:TypeArguments="x:Boolean" Default="False" Name="optiuneFotograf" />
+                                <Variable x:TypeArguments="x:Boolean" Default="False" Name="optiuneFilmare" />
+                                <Variable x:TypeArguments="x:Boolean" Default="False" Name="optiuneAlbum" />
                               </Sequence.Variables>
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -755,7 +776,15 @@
                               </ui:MultipleAssign>
                               <p:WordExportToPdf DisplayName="Salvare fisier ca PDF" FilePath="[numeFisierGenerat]" sap:VirtualizedContainerService.HintSize="584,143.2" sap2010:WorkflowViewState.IdRef="WordExportToPdf_1" />
                               <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[folderPath]" DisplayName="Muta fisier in folder" sap:VirtualizedContainerService.HintSize="584,192" sap2010:WorkflowViewState.IdRef="MoveFile_2" Overwrite="True" Path="[numeFisierGenerat]" />
-                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="584,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Generat PDF pentru user &quot; + mailUtilizator + &quot; ID oferta &quot; + offerCode]" />
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="584,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Generat PDF pentru user &quot; + mailUtilizator + &quot; ID oferta &quot; + offerCode]" />
+                              <Assign sap:VirtualizedContainerService.HintSize="584,104.8" sap2010:WorkflowViewState.IdRef="Assign_17">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">[successfulWrite]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                </Assign.Value>
+                              </Assign>
                             </Sequence>
                           </ActivityAction>
                         </p:WordApplicationScope.Body>
@@ -767,14 +796,15 @@
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="651.2,343.2" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="651.2,465.6" sap2010:WorkflowViewState.IdRef="Sequence_29">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="617.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;Eroare generare PDF pentru user &quot; + mailUtilizator + &quot; ID oferta &quot; + offerCode]" />
-                            <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Caption="Eroare generare PDF" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="617.6,108.8" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Eroare generare PDF &quot; + exception.ToString]" />
+                            <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Caption="Eroare generare PDF" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="617.6,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Eroare generare PDF &quot; + exception.ToString]" />
+                            <Throw Exception="[New BusinessRuleException(&quot;Eroare la generare PDF (vezi logs).&quot;)]" sap:VirtualizedContainerService.HintSize="617.6,113.6" sap2010:WorkflowViewState.IdRef="Throw_2" />
                           </Sequence>
                         </ActivityAction>
                       </Catch>
@@ -801,15 +831,15 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[successfulWrite]" sap:VirtualizedContainerService.HintSize="688,1250.4" sap2010:WorkflowViewState.IdRef="If_12">
+            <If Condition="[successfulWrite]" sap:VirtualizedContainerService.HintSize="688,1307.2" sap2010:WorkflowViewState.IdRef="If_12">
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="451.2,1031.2" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="451.2,1088" sap2010:WorkflowViewState.IdRef="Sequence_33">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="417.6,971.2" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="417.6,1028" sap2010:WorkflowViewState.IdRef="TryCatch_3">
                     <TryCatch.Try>
                       <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="416,373.6" sap2010:WorkflowViewState.IdRef="Sequence_35">
                         <sap:WorkflowViewStateService.ViewState>
@@ -827,14 +857,15 @@
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,343.2" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,400" sap2010:WorkflowViewState.IdRef="Sequence_36">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[&quot;Eroare la marcare coloana PDF.&quot;]" />
-                            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="382.4,108.8" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;Eroare la marcare coloana PDF &quot; + exception.ToString]" />
+                            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="382.4,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;Eroare la marcare coloana PDF &quot; + exception.ToString]" />
+                            <Rethrow sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="Rethrow_2" />
                           </Sequence>
                         </ActivityAction>
                       </Catch>

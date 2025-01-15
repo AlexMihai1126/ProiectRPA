@@ -125,18 +125,40 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="replyEmail" sap:VirtualizedContainerService.HintSize="1452.0000000000002,1742.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="replyEmail" sap:VirtualizedContainerService.HintSize="809.6000000000001,1922.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_Input" />
       <Variable x:TypeArguments="x:Int32" Name="rowIndex" />
-      <Variable x:TypeArguments="x:String" Default="informatii_email.xlsx" Name="excelPath" />
-      <Variable x:TypeArguments="x:String" Default="PDF_Docs" Name="folderPath" />
+      <Variable x:TypeArguments="x:String" Name="excelPath" />
+      <Variable x:TypeArguments="x:String" Name="folderPath" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="548.8,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[excelPath]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[In_excelPath]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[folderPath]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[In_folderPath]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
     <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dt_Input]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="548.8,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="[excelPath]" />
     <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[rowIndex]" DataTable="[dt_Input]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="548.8,1599.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
