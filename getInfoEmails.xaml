@@ -272,7 +272,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="getInfoEmails" sap:VirtualizedContainerService.HintSize="912.0000000000001,14053.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="getInfoEmails" sap:VirtualizedContainerService.HintSize="1452.0000000000002,14201.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="emailList" />
       <Variable x:TypeArguments="x:String" Name="emailBody" />
@@ -404,13 +404,13 @@
         <InArgument x:TypeArguments="x:Int32">[dt_Input.Rows.Count]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each currentMailMessage" sap:VirtualizedContainerService.HintSize="643.2,11966.4" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[emailList]">
+    <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each currentMailMessage" sap:VirtualizedContainerService.HintSize="643.2,12114.4" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[emailList]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="snm:MailMessage">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="currentMailMessage" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="641.6,11844.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="641.6,11992.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="s:String[]" Name="emailBodyLines" />
               <Variable x:TypeArguments="x:String" Name="eventType" />
@@ -483,13 +483,13 @@
                 <InArgument x:TypeArguments="s:String[]">[emailBody.Split(Environment.NewLine.ToArray, StringSplitOptions.RemoveEmptyEntries)]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each currentText" sap:VirtualizedContainerService.HintSize="608,9032.8" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[emailBodyLines]">
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each currentText" sap:VirtualizedContainerService.HintSize="608,9180.8" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[emailBodyLines]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:String">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:String" Name="currentText" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="606.4,8902.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="606.4,9050.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="senderPhoneNumber" />
                     </Sequence.Variables>
@@ -498,9 +498,9 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="572.8,8842.4" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="572.8,8990.4" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                       <TryCatch.Try>
-                        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="571.2,8305.6" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="571.2,8453.6" sap2010:WorkflowViewState.IdRef="Sequence_32">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -879,9 +879,9 @@
                               </Sequence>
                             </If.Else>
                           </If>
-                          <If Condition="[validMail = True]" sap:VirtualizedContainerService.HintSize="537.6,1898.4" sap2010:WorkflowViewState.IdRef="If_19">
+                          <If Condition="[validMail = True]" sap:VirtualizedContainerService.HintSize="537.6,2046.4" sap2010:WorkflowViewState.IdRef="If_19">
                             <If.Then>
-                              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,1679.2" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,1827.2" sap2010:WorkflowViewState.IdRef="Sequence_52">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -897,7 +897,8 @@
                                 <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;H&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="382.4,148" sap2010:WorkflowViewState.IdRef="WriteCell_11" SheetName="Sheet1" Text="[eventMentions]" WorkbookPath="[excelPath]" />
                                 <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;I&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Coloana: Confirmat" sap:VirtualizedContainerService.HintSize="382.4,148" sap2010:WorkflowViewState.IdRef="WriteCell_15" SheetName="Sheet1" Text="nu" WorkbookPath="[excelPath]" />
                                 <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;J&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Coloana: PDF" sap:VirtualizedContainerService.HintSize="382.4,148" sap2010:WorkflowViewState.IdRef="WriteCell_18" SheetName="Sheet1" Text="nu" WorkbookPath="[excelPath]" />
-                                <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;K&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Coloana: Cod - 5 cifre generate random" sap:VirtualizedContainerService.HintSize="382.4,139.2" sap2010:WorkflowViewState.IdRef="WriteCell_19" SheetName="Sheet1" Text="[New Random().Next(10000, 99999).ToString()]" WorkbookPath="[excelPath]" />
+                                <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;K&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Coloana: Cod - 5 cifre generate random" sap:VirtualizedContainerService.HintSize="382.4,148" sap2010:WorkflowViewState.IdRef="WriteCell_19" SheetName="Sheet1" Text="[New Random().Next(10000, 99999).ToString()]" WorkbookPath="[excelPath]" />
+                                <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;L&quot;+ (counterMails + 2+ excelRowsCount).ToString]" DisplayName="Coloana: data_adaugare_excel" sap:VirtualizedContainerService.HintSize="382.4,139.2" sap2010:WorkflowViewState.IdRef="WriteCell_20" SheetName="Sheet1" Text="[Now.ToString(&quot;dd-MM-yyyy HH:mm:ss&quot;)]" WorkbookPath="[excelPath]" />
                               </Sequence>
                             </If.Then>
                             <If.Else>
@@ -967,7 +968,7 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" TimeoutMS="{x:Null}" AttachmentInputMode="Existing" Body="[&quot;Buna &quot; + senderName +&quot;, &quot;+ Environment.NewLine + Environment.NewLine +&quot;Vă mulțumim pentru mesajul dumneavoastră. Din păcate, email-ul trimis nu respectă template-ul cerut sau este completat greșit și nu poate fi procesat. Vă rugăm să-l refaceti conform formatului solicitat și să îl retransmiteți.&quot;+Environment.NewLine+ Environment.NewLine +&quot;O zi minunată!&quot;]" ConnectionId="3e53ce9d-2489-4d69-9191-7d9fd41177f5" DisplayName="Send SMTP Email" Email="[In_mail]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="382.4,278.4" sap2010:WorkflowViewState.IdRef="SendMail_3" IgnoreCRL="False" IsBodyHtml="False" MailMessage="[currentMailMessage]" Port="587" SecureConnection="Auto" SecurePassword="[In_pass]" Server="smtp.gmail.com" Subject="[&quot;Reply corectare cerere &quot; + senderName]" To="[emailSender]" UseISConnection="False" UseOAuth="False">
+                        <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" TimeoutMS="{x:Null}" AttachmentInputMode="Existing" Body="[&quot;Buna &quot; + senderName +&quot;, &quot;+ Environment.NewLine + Environment.NewLine +&quot;Vă mulțumim pentru mesajul dumneavoastră. Din păcate, email-ul trimis nu respectă template-ul cerut sau este completat greșit și nu poate fi procesat. Vă rugăm să-l refaceti conform formatului solicitat și să îl retransmiteți.&quot;+Environment.NewLine+ Environment.NewLine +&quot;O zi minunată!&quot;]" ConnectionId="3e53ce9d-2489-4d69-9191-7d9fd41177f5" DisplayName="Send SMTP Email" Email="[In_mail]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="382.4,278.4" sap2010:WorkflowViewState.IdRef="SendMail_3" IgnoreCRL="False" IsBodyHtml="False" MailMessage="[currentMailMessage]" Port="587" SecureConnection="SslOnConnect" SecurePassword="[In_pass]" Server="smtp.gmail.com" Subject="[&quot;Reply corectare cerere &quot; + senderName]" To="[emailSender]" UseISConnection="False" UseOAuth="False">
                           <ui:SendMail.AttachmentsBackup>
                             <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="Existing">
                               <usau:BackupSlot.BackupValues>

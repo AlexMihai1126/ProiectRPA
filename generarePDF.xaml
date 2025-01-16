@@ -247,7 +247,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="generarePDF" sap:VirtualizedContainerService.HintSize="809.6000000000001,11044" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="generarePDF" sap:VirtualizedContainerService.HintSize="1452.0000000000002,11044" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="datatableExcel" />
       <Variable x:TypeArguments="x:Int32" Name="nrOreCalculat" />
@@ -364,11 +364,7 @@
           </ActivityAction.Argument>
           <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="721.6,9243.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
-              <Variable x:TypeArguments="x:Boolean" Name="successfulWrite">
-                <Variable.Default>
-                  <Literal x:TypeArguments="x:Boolean" />
-                </Variable.Default>
-              </Variable>
+              <Variable x:TypeArguments="x:Boolean" Default="False" Name="successfulWrite" />
               <Variable x:TypeArguments="x:String" Name="offerCode" />
               <Variable x:TypeArguments="x:String" Name="mailUtilizator" />
             </Sequence.Variables>
@@ -377,7 +373,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[String.Equals(CType(CurrentRow(&quot;Confirmat&quot;), String).ToLower(), &quot;nu&quot;)]" sap:VirtualizedContainerService.HintSize="688,7876" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[String.Equals(CType(CurrentRow(&quot;Confirmat&quot;), String).ToLower(), &quot;nu&quot;) AndAlso String.Equals(CType(CurrentRow(&quot;PDF&quot;), String).ToLower(), &quot;nu&quot;)]" sap:VirtualizedContainerService.HintSize="688,7876" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="686.4,7648" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <Sequence.Variables>
@@ -863,7 +859,7 @@
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[&quot;Eroare la marcare coloana PDF.&quot;]" />
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Fatal" Message="[&quot;Eroare la marcare coloana PDF.&quot;]" />
                             <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="382.4,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;Eroare la marcare coloana PDF &quot; + exception.ToString]" />
                             <Rethrow sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="Rethrow_2" />
                           </Sequence>
